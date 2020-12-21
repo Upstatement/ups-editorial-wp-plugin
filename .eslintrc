@@ -1,0 +1,18 @@
+{
+  "root": true,
+  "extends": "../../.eslintrc",
+  "overrides": [
+    {
+      "files": "./src/**/*.js",
+      "extends": "@upstatement/eslint-config/react",
+      "rules": {
+        "react/react-in-jsx-scope": "off"
+      },
+      "settings": {
+        "react": {
+          "version": "^16.9.0"
+        }
+      }
+    }
+  ]
+}

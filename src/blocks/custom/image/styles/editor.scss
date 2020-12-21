@@ -1,0 +1,10 @@
+.wp-block-ups-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .rich-text--caption {
+    color: $c-gray;
+    text-align: center;
+  }
+}

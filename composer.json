@@ -1,0 +1,24 @@
+{
+  "name": "upstatement/ups-blocks-wp-plugin",
+  "type": "wordpress-plugin",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "Upstatement",
+      "email": "tech@upstatement.com",
+      "homepage": "https://upstatement.com"
+    }
+  ],
+  "description": "WordPress plugin for cusomizing the editor experience to suit Upstatement-built WordPress projects.",
+  "require": {
+    "composer/installers": "v1.0.6",
+    "php-ds/php-ds": "^1.2"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.4",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+    "phpcompatibility/phpcompatibility-wp": "^2.1",
+    "wp-coding-standards/wpcs": "^2.3"
+  },
+  "prefer-stable" : true
+}

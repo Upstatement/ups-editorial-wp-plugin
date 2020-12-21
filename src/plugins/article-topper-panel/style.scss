@@ -1,0 +1,26 @@
+.article-topper-panel {
+  .row {
+    margin-bottom: $spacing-base;
+  }
+
+  .topper-type {
+    display: flex;
+
+    .topper-type__control {
+      flex: 2;
+    }
+  }
+
+  .topper-preview {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    margin-top: ($font-size-base * $line-height) + $spacing-xs;
+    margin-left: $spacing-base;
+
+    .topper-preview__window {
+      display: block;
+      width: 100%;
+    }
+  }
+}
