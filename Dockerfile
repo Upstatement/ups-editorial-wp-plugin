@@ -44,5 +44,4 @@ COPY docker/conf /var/www/html/conf
 COPY docker/scripts /var/www/html/scripts
 
 # Copy the rest of this theme into place
-ARG WORDPRESS_PLUGIN_NAME
-COPY . /var/www/html/wp-content/plugins/${WORDPRESS_PLUGIN_NAME}
+COPY . /var/www/html/wp-content/plugins/ups-blocks

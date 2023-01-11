@@ -81,6 +81,12 @@ add_action(
 
 /**
  * Sync byline post meta to taxonomy terms when meta is added, updated or deleted.
+ *
+ * @param int    $meta_id    The meta ID after successful update.
+ * @param int    $post_id    ID of the object metadata is for.
+ * @param string $meta_key   Metadata key.
+ * @param mixed  $meta_value Metadata value. Serialized if non-scalar.
+ * @return void
  */
 function handle_post_meta_saved( $meta_id, $post_id, $meta_key, $meta_value ) {
 	if ( BYLINES_META_KEY !== $meta_key ) {
@@ -91,23 +97,33 @@ function handle_post_meta_saved( $meta_id, $post_id, $meta_key, $meta_value ) {
 	$term_ids   = wp_parse_id_list( $meta_value );
 
 	// Avoid infinite loops when saving terms
-	remove_filter( 'set_object_terms', '\Ups\Blocks\handle_set_object_terms', 10, 4 );
+	remove_filter( 'set_object_terms', '\Ups\Blocks\handle_set_object_terms', 10 );
 
 	wp_set_post_terms( $post_id, $term_ids, AUTHOR_TAXONOMY_NAME );
 
 	add_filter( 'set_object_terms', '\Ups\Blocks\handle_set_object_terms', 10, 4 );
 }
 
+/**
+ * Register callbacks for all post meta actions.
+ *
+ * @return void
+ */
 function add_post_meta_saved_actions() {
 	add_action( 'added_post_meta', '\Ups\Blocks\handle_post_meta_saved', 10, 4 );
 	add_action( 'updated_post_meta', '\Ups\Blocks\handle_post_meta_saved', 10, 4 );
 	add_action( 'deleted_post_meta', '\Ups\Blocks\handle_post_meta_saved', 10, 4 );
 }
 
+/**
+ * Unregister callbacks for all post meta actions.
+ *
+ * @return void
+ */
 function remove_post_meta_saved_actions() {
-	remove_action( 'added_post_meta', '\Ups\Blocks\handle_post_meta_saved', 10, 4 );
-	remove_action( 'updated_post_meta', '\Ups\Blocks\handle_post_meta_saved', 10, 4 );
-	remove_action( 'deleted_post_meta', '\Ups\Blocks\handle_post_meta_saved', 10, 4 );
+	remove_action( 'added_post_meta', '\Ups\Blocks\handle_post_meta_saved', 10 );
+	remove_action( 'updated_post_meta', '\Ups\Blocks\handle_post_meta_saved', 10 );
+	remove_action( 'deleted_post_meta', '\Ups\Blocks\handle_post_meta_saved', 10 );
 }
 
 add_post_meta_saved_actions();
@@ -119,13 +135,19 @@ add_post_meta_saved_actions();
  * - Quick Edit
  * - Bulk Edit
  * - Anywhere a byline term is saved outside of the post editor context.
+ *
+ * @param int    $object_id  Object ID.
+ * @param array  $terms      An array of object terms.
+ * @param array  $tt_ids     An array of term taxonomy IDs.
+ * @param string $taxonomy   Taxonomy slug.
+ * @return void
  */
 function handle_set_object_terms( $object_id, $terms, $tt_ids, $taxonomy ) {
-	if ( $taxonomy !== AUTHOR_TAXONOMY_NAME ) {
+	if ( AUTHOR_TAXONOMY_NAME !== $taxonomy ) {
 		return;
 	}
 
-	// Avoid infinite loops when saving post meta
+	// Avoid infinite loops when saving post meta.
 	remove_post_meta_saved_actions();
 
 	if ( empty( $tt_ids ) ) {
@@ -151,8 +173,11 @@ function handle_display_author( $display_name ) {
 	if ( 'post' === get_post_type() ) {
 		$post    = get_post();
 		$bylines = \Ups\Blocks\get_post_bylines( $post, 'name' );
-		return implode( ', ', $bylines );
+		if ( $bylines ) {
+			return implode( ', ', $bylines );
+		}
 	}
+
 	return $display_name;
 }
 add_filter( 'the_author', '\Ups\Blocks\handle_display_author', 10, 1 );
@@ -160,17 +185,17 @@ add_filter( 'the_author', '\Ups\Blocks\handle_display_author', 10, 1 );
 /**
  * Helper function for themes to retrieve byline authors for a given post.
  *
- * @param WP_Post|int $post  Optional post to retrieve authors for. Leave blank to
- *                           use the current global post.
- * @param string      $field The field to return for each author. This can be any
- *                           property from a WP_Term.
+ * @param \WP_Post|int $post  Optional post to retrieve authors for. Leave blank to
+ *                            use the current global post.
+ * @param string       $field The field to return for each author. This can be any
+ *                            property from a WP_Term.
  *
- * @return array List of author terms.
+ * @return array<\WP_Term>|null List of author terms.
  */
 function get_post_bylines( $post = null, $field = null ) {
 	$post = get_post( $post );
 	if ( ! $post ) {
-		return;
+		return null;
 	}
 
 	$authors    = array();
@@ -184,15 +209,14 @@ function get_post_bylines( $post = null, $field = null ) {
 				'orderby'    => 'include',
 			)
 		);
+
+		if ( ! is_array( $authors ) ) {
+			return null;
+		}
 	}
 
 	if ( $field ) {
-		$flat_authors = array();
-		foreach ( $authors as $author_term ) {
-			$flat_authors[] = $author_term->{$field};
-		}
-
-		return $flat_authors;
+		return wp_list_pluck( $authors, $field );
 	}
 
 	return $authors;

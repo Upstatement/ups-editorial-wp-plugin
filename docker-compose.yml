@@ -3,10 +3,8 @@ services:
   wordpress:
     build:
       context: .
-      args:
-        - WORDPRESS_PLUGIN_NAME
     volumes:
-      - ./:/var/www/html/wp-content/plugins/${WORDPRESS_PLUGIN_NAME}:cached
+      - ./:/var/www/html/wp-content/plugins/ups-blocks:cached
       - ./logs:/var/www/html/logs
     depends_on:
       - db
@@ -25,10 +23,6 @@ services:
       WORDPRESS_DB_NAME: wordpress
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
-
-      # Defined in `.env`, which is automatically loaded by `docker-compose`
-      # See https://docs.docker.com/compose/environment-variables/#the-env-file
-      WORDPRESS_PLUGIN_NAME: ${WORDPRESS_PLUGIN_NAME}
 
       # Runtime configuration for richarvey/nginx-php-fpm
       # See https://github.com/richarvey/nginx-php-fpm

@@ -14,6 +14,7 @@ module.exports = {
     style: './src/blocks/style.scss',
     editor: './src/blocks/editor.scss',
     plugins: ['./src/plugins', './src/plugins/style.scss'],
+    admin: './src/blocks/admin',
   },
   module: {
     ...defaultConfig.module,

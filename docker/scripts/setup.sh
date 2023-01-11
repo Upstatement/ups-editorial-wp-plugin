@@ -43,7 +43,7 @@ if ! $(wp core is-installed); then
 		--admin_email="$WORDPRESS_ADMIN_EMAIL" \
 		--admin_password="$WORDPRESS_ADMIN_PASSWORD"
 
-	wp plugin activate $WORDPRESS_PLUGIN_NAME
+	wp plugin activate ups-blocks
 
 	# Ensure correct permissions for files / directories creating during install.
 	if [ -z "$SKIP_CHOWN" ]; then
