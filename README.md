@@ -1,6 +1,6 @@
-# Upstatement Blocks
+# Upstatement Editorial
 
-A plugin for customizing the [Gutenberg](https://wordpress.org/gutenberg/) editor experience to suit Upstatement-built WordPress projects.
+A plugin for enhancing the WordPress editorial experience, including some common customizations for the [Gutenberg](https://wordpress.org/gutenberg/) editor.
 
 ## Table of Contents
 
@@ -26,7 +26,6 @@ The purpose of this plugin is to tailor the Gutenberg editor experience to be be
 - Replacing the core image block with a custom image block to expose theme-related functionality
 - Allowing for multiple authors to appear on the byline
 
-
 ## Local Development
 
 This repository includes a docker setup that will allow you to run a basic WordPress installation with the ups-block plugin installed. You'll need to ensure that you have [Docker Desktop](https://www.docker.com/products/docker-desktop) installed on your machine first.
@@ -51,19 +50,17 @@ To start working locally:
    npm run start
    ```
 
-
 4. Start the docker containers (note that the `-d` flag will run the container in the background):
 
-    ```shell
-    docker-compose up -d --build
-    ```
+   ```shell
+   docker-compose up -d --build
+   ```
 
 You can build the static front-end assets at any time with the following script:
 
 ```shell
 npm run build
 ```
-
 
 ## Directory Structure
 
