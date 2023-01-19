@@ -1,9 +1,18 @@
 {
   "root": true,
-  "extends": "../../.eslintrc",
+  "extends": "@upstatement",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "globals": {
+    "wp": "readonly"
+  },
+  "plugins": ["react"],
   "overrides": [
     {
-      "files": "./src/**/*.js",
+      "files": ["./src/**/*.js", "./src/index.js"],
       "extends": "@upstatement/eslint-config/react",
       "rules": {
         "react/react-in-jsx-scope": "off"

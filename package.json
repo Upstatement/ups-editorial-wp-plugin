@@ -5,9 +5,19 @@
   "author": "Upstatement <tech@upstatement.com>",
   "license": "ISC",
   "scripts": {
-    "build": "wp-scripts build --config webpack.config.js",
-    "start": "wp-scripts start --config webpack.config.js"
+    "build": "wp-scripts build",
+    "start": "wp-scripts start"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/eslint-parser": "^7.19.1",
+    "@upstatement/eslint-config": "^1.0.1",
+    "@upstatement/prettier-config": "^1.0.0",
+    "@wordpress/scripts": "25.2.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.32.1",
+    "prettier": "^2.8.3"
+  }
 }
