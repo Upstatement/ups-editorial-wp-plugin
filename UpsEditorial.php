@@ -9,11 +9,14 @@
 
 namespace Upstatement\Editorial;
 
+define( 'UPS_EDITORIAL_PLUGIN_DIR', __DIR__ );
+define( 'UPS_EDITORIAL_PLUGIN_FILE', __FILE__ );
+
 /** Autoloader */
 require_once 'vendor/autoload.php';
 
-define( 'UPS_EDITORIAL_PLUGIN_DIR', __DIR__ );
-define( 'UPS_EDITORIAL_PLUGIN_FILE', __FILE__ );
+/** Include template functions. */
+require_once 'Template.php';
 
 /**
  * Plugin entrypoint.
@@ -29,8 +32,9 @@ class UpsEditorial {
 		$plugin = new self();
 
 		Assets::register();
-	}
 
+		Taxonomy\Author::register();
+	}
 }
 
 UpsEditorial::register();

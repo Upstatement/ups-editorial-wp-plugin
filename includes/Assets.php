@@ -34,5 +34,12 @@ class Assets {
 			$blocks_asset['version'],
 			true
 		);
+
+		wp_enqueue_style(
+			'upstatement-editorial-style',
+			plugins_url( '/build/index.css', UPS_EDITORIAL_PLUGIN_FILE ),
+			array( 'wp-components' ),
+			$blocks_asset['version']
+		);
 	}
 }

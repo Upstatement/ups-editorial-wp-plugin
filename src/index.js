@@ -1,9 +1,15 @@
-import { registerBlockType } from '@wordpress/blocks';
+/**
+ * Entrypoint for custom plugins.
+ *
+ * @see https://www.npmjs.com/package/@wordpress/plugins
+ */
+import { registerPlugin } from '@wordpress/plugins';
 
-registerBlockType('myguten/test-block', {
-  title: 'Basic Example',
-  icon: 'smiley',
-  category: 'design',
-  edit: () => <div>Hola, mundo!</div>,
-  save: () => <div>Hola, mundo!</div>,
+import * as BylinesPanel from './plugins/bylines-panel';
+
+[BylinesPanel].forEach(({ name, render, icon }) => {
+  registerPlugin(name, {
+    icon,
+    render,
+  });
 });
