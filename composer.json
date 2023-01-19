@@ -12,7 +12,7 @@
   "description": "Plugin for extending the WordPress editorial experience.",
   "autoload": {
     "psr-4": {
-      "Upstatement\\Editorial\\": "lib"
+      "Upstatement\\Editorial\\": "includes"
     }
   },
   "require": {},
