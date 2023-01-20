@@ -7,9 +7,11 @@ import { registerPlugin } from '@wordpress/plugins';
 
 import * as BylinesPanel from './plugins/bylines-panel';
 
-[BylinesPanel].forEach(({ name, render, icon }) => {
-  registerPlugin(name, {
-    icon,
-    render,
+[BylinesPanel]
+  .filter(({ enabled }) => enabled)
+  .forEach(({ name, render, icon }) => {
+    registerPlugin(name, {
+      icon,
+      render,
+    });
   });
-});

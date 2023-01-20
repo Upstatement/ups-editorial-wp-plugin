@@ -141,3 +141,5 @@ export const render = () => {
     </PluginDocumentSettingPanel>
   );
 };
+
+export const enabled = window.ups_editorial?.bylines;

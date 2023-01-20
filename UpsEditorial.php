@@ -31,9 +31,13 @@ class UpsEditorial {
 	public static function register() {
 		$plugin = new self();
 
+		Config::read();
 		Assets::register();
 
-		Taxonomy\Author::register();
+		if ( Config::get( 'bylines' ) ) {
+			Taxonomy\Author::register();
+		}
+
 	}
 }
 

@@ -34,6 +34,7 @@ class Assets {
 			$blocks_asset['version'],
 			true
 		);
+		wp_localize_script( 'upstatement-editorial-js', 'ups_editorial', Config::get_all() );
 
 		wp_enqueue_style(
 			'upstatement-editorial-style',
