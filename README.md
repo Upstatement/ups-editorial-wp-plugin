@@ -7,6 +7,7 @@ A WordPress plugin for enhancing the editorial experience, including some common
 - [What This Plugin Does](#what-this-plugin-does)
   - [Blocks](#blocks)
   - [Editor Plugins](#editor-plugins)
+- [Theme Configuration](#theme-configuration)
 - [Troubleshooting](#troubleshooting)
 - [Local Development](#local-development)
 - [Resources](#resources)
@@ -56,6 +57,33 @@ The article topper panel controls article post metadata concerned with the artic
 The bylines panel allows editors to assign multiple authors to the author byline. This process starts with the `Authors` section under `Posts`, where you can create author profiles.
 
 These authors also serve as taxonomies for your articles, so archive pages full of an author's own content are auto-generated on your behalf.
+
+## Theme configuration
+
+By default, all features of this plugin are enabled once the plugin is activated. However, you are able to configure the plugin's functionality (including disabling certain features) via a configuration file that can be added to your theme.
+
+To set up a configuration file, add a `ups-editorial.php` file to your theme's root that returns an array containing the relevant configuration options:
+
+```php
+<?php
+/**
+ * Configuration for the ups-editorial plugin.
+ */
+
+return array(
+	'bylines' => false,
+);
+```
+
+### Configuration
+
+#### `bylines`
+
+**Allowed types:** `boolean`
+
+**Default value:** `true`
+
+Enable or disable the plugin's `Author` taxonomy, as well as the control mechanism for setting bylines for an individual post.
 
 ## Troubleshooting
 

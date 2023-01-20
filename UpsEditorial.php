@@ -37,7 +37,6 @@ class UpsEditorial {
 		if ( Config::get( 'bylines' ) ) {
 			Taxonomy\Author::register();
 		}
-
 	}
 }
 
