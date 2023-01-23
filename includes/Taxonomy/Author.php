@@ -8,10 +8,6 @@
 
 namespace Upstatement\Editorial\Taxonomy;
 
-use WP_REST_Response;
-use WP_Taxonomy;
-use WP_REST_Request;
-
 class Author {
 	/**
 	 * The name of the taxonomy.
