@@ -18,7 +18,7 @@ const META = {
 
 domReady(() => {
   // Remove built-in taxonomy UI for Authors
-  dispatch('core/edit-post').removeEditorPanel('taxonomy-panel-author');
+  dispatch('core/edit-post').removeEditorPanel('taxonomy-panel-ups_authors');
 });
 
 const BylinesPanel = () => {

@@ -1,6 +1,7 @@
 <?php
 /**
- * Set up the author taxonomy which will drive the bylines behavior for posts.
+ * Set up the author taxonomy which will drive the bylines behavior for posts. Bylines are exposed via the
+ * `bylines-panel` plugin defined in the JavaScript `src/` directory.
  *
  * @package Upstatement\Editorial
  */
@@ -41,7 +42,6 @@ class Author {
 		$author->add_post_meta_saved_actions();
 
 		add_filter( 'the_author', array( $author, 'handle_display_author' ), 10, 1 );
-		add_filter( 'rest_prepare_taxonomy', array( $author, 'handle_rest_prepare_taxonomy' ), 10, 3 );
 
 		// Kill author rewrite rules for our taxonomy to supersede.
 		add_filter( 'author_rewrite_rules', fn() => array() );
@@ -201,32 +201,6 @@ class Author {
 		}
 
 		return $display_name;
-	}
-
-	/**
-	 * Prepare taxonomy data for REST. This prevents the Author taxonomy metabox from appearing in the Gutenberg
-	 * sidebar (panel) so we can focus on our custom panel defined as a plugin.
-	 *
-	 * @see https://github.com/WordPress/gutenberg/issues/13816#issuecomment-470137667
-	 *
-	 * @param WP_REST_Response $response Response object.
-	 * @param WP_Taxonomy      $taxonomy Taxonomy object.
-	 * @param WP_REST_Request  $request  Request object.
-	 *
-	 * @return WP_REST_Response
-	 */
-	public function handle_rest_prepare_taxonomy( $response, $taxonomy, $request ) {
-		$context = ! empty( $request['context'] ) ? $request['context'] : 'view';
-
-		// Context is edit in the editor.
-		if ( self::NAME === $taxonomy->name && 'edit' === $context && false === $taxonomy->meta_box_cb ) {
-			$data_response = $response->get_data();
-
-			$data_response['visibility']['show_ui'] = false;
-			$response->set_data( $data_response );
-		}
-
-		return $response;
 	}
 
 	/**
