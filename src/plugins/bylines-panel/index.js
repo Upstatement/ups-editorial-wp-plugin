@@ -1,3 +1,8 @@
+/**
+ * Sets up the panel in the Gutenberg editor to manage bylines. The `ups_author`
+ * taxonomy is defined in the \Upstatement\Editorial\Taxonomy\Author PHP class.
+ */
+
 import apiFetch from '@wordpress/api-fetch';
 import { useEffect, useMemo, useState, Fragment } from '@wordpress/element';
 import { dispatch, useSelect } from '@wordpress/data';
@@ -142,4 +147,6 @@ export const render = () => {
   );
 };
 
+// Export the status of this component. This can be disabled by setting the
+// `bylines` config value to `false` in your theme's `ups-editorial.php` file.
 export const enabled = window.ups_editorial?.bylines;
