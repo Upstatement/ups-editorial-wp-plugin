@@ -103,6 +103,14 @@ Enable or disable the registration of fields for article toppers and the Gutenbe
 
 There are a few globally-available functions that can be used by your theme to retrieve data defined by this plugin's functionality. These functions are defined in the `Template.php` file at the root of the plugin directory, and exist under the `Upstatement\Editorial` namespace.
 
+It is recommended that your theme implement these functions wrapped by a `function_exists` check to prevent undefined errors in the case that the plugin is disabled. For example:
+
+```php
+if ( function_exists( 'Upstatement\Editorial\get_post_bylines' ) ) {
+  $bylines = \Upstatement\Editorial\get_post_bylines();
+  ...
+```
+
 ### `get_post_bylines`
 
 ```php
