@@ -14,11 +14,14 @@ class Config {
 	 * @var array
 	 */
 	private static array $defaults = array(
-		// Enables the bylines functionality, including the `Authors` taxonomy.
-		'bylines'        => true,
+		// Enable the bylines functionality, including the `Authors` taxonomy.
+		'bylines'          => true,
 
 		// Enable the article topper fields.
-		'article_topper' => true,
+		'article_topper'   => true,
+
+		// Enable the credit field for attachments.
+		'attachment_credit' => true,
 	);
 
 	/**

@@ -76,8 +76,9 @@ To set up a configuration file, add a `ups-editorial.php` file to your theme's r
  */
 
 return array(
-  'bylines'        => true,
-  'article_topper' => true,
+  'bylines'           => true,
+  'article_topper'    => true,
+  'attachment_credit' => true,
 );
 ```
 
@@ -98,6 +99,14 @@ Enable or disable the plugin's `Author` taxonomy, as well as the control mechani
 **Default value:** `true`
 
 Enable or disable the registration of fields for article toppers and the Gutenberg panel that controls those fields.
+
+#### `attachment_credit`
+
+**Allowed types:** `boolean`
+
+**Default value:** `true`
+
+Enable or disable the registration of a `credit` field for attachments.
 
 ## Theme API
 

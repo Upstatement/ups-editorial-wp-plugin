@@ -29,8 +29,6 @@ class UpsEditorial {
 	 * @return void
 	 */
 	public static function register() {
-		$plugin = new self();
-
 		Config::read();
 		Assets::register();
 
@@ -40,6 +38,10 @@ class UpsEditorial {
 
 		if ( Config::get( 'article_topper' ) ) {
 			Meta\ArticleTopper::register();
+		}
+
+		if ( Config::get( 'attachment_credit' ) ) {
+			Meta\AttachmentCredit::register();
 		}
 	}
 }
