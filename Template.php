@@ -53,7 +53,7 @@ function get_post_bylines( $post = null, $field = null ) {
 /**
  * Helper function for themes to retrieve overline category a given post.
  *
- * @param WP_Post|int $post Post to retrieve authors for. Optional. Leave blank to use the current global post.
+ * @param WP_Post|int $post Post to retrieve the overline for. Optional. Leave blank to use the current global post.
  *
  * @return WP_Term|null Category used as overline
  */

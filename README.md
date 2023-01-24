@@ -8,6 +8,7 @@ A WordPress plugin for enhancing the editorial experience, including some common
   - [Blocks](#blocks)
   - [Editor Plugins](#editor-plugins)
 - [Theme Configuration](#theme-configuration)
+- [Theme API](#theme-api)
 - [Troubleshooting](#troubleshooting)
 - [Local Development](#local-development)
 - [Resources](#resources)
@@ -58,6 +59,10 @@ The bylines panel allows editors to assign multiple authors to the author byline
 
 These authors also serve as taxonomies for your articles, so archive pages full of an author's own content are auto-generated on your behalf.
 
+### Template functions
+
+This plugin exposes a few functions that can be used to retrieve relevant values handled by the plugin. See the [Theme API](#theme-api) section for information about the available functions.
+
 ## Theme configuration
 
 By default, all features of this plugin are enabled once the plugin is activated. However, you are able to configure the plugin's functionality (including disabling certain features) via a configuration file that can be added to your theme.
@@ -71,7 +76,7 @@ To set up a configuration file, add a `ups-editorial.php` file to your theme's r
  */
 
 return array(
-	'bylines'        => true,
+  'bylines'        => true,
   'article_topper' => true,
 );
 ```
@@ -93,6 +98,50 @@ Enable or disable the plugin's `Author` taxonomy, as well as the control mechani
 **Default value:** `true`
 
 Enable or disable the registration of fields for article toppers and the Gutenberg panel that controls those fields.
+
+## Theme API
+
+There are a few globally-available functions that can be used by your theme to retrieve data defined by this plugin's functionality. These functions are defined in the `Template.php` file at the root of the plugin directory, and exist under the `Upstatement\Editorial` namespace.
+
+### `get_post_bylines`
+
+```php
+get_post_bylines( WP_Post $post = null, string $field = null) : array | null
+```
+
+Retrieve the byline for a post.
+
+#### Parameters
+
+**`post`**
+
+&nbsp;&nbsp;&nbsp;&nbsp;Post to retrieve authors for. Leave blank to use the current global post.
+
+**`field`**
+
+&nbsp;&nbsp;&nbsp;&nbsp;The field to return for each author. This can be any property from a WP_Term object. Leave blank to return the entire WP_Term object.
+
+#### Return
+
+Returns an array consisting of author data. If **`field`** is blank, this will be an array of `WP_Term` objects. If a **`field`** is specific, this will be an array of values for that field.
+
+### `get_post_overline`
+
+```php
+get_post_overline( WP_Post $post = null ) : WP_Term | null
+```
+
+Retrieve the overline category for a post.
+
+#### Parameters
+
+**`post`**
+
+&nbsp;&nbsp;&nbsp;&nbsp;Post to retrieve the overline for. Leave blank to use the current global post.
+
+#### Return
+
+Returns the `WP_Term` object of the category term identified as the overline, or null if none is set.
 
 ## Troubleshooting
 
