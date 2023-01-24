@@ -15,7 +15,10 @@ class Config {
 	 */
 	private static array $defaults = array(
 		// Enables the bylines functionality, including the `Authors` taxonomy.
-		'bylines' => true,
+		'bylines'        => true,
+
+		// Enable the article topper fields.
+		'article_topper' => true,
 	);
 
 	/**

@@ -37,6 +37,10 @@ class UpsEditorial {
 		if ( Config::get( 'bylines' ) ) {
 			Taxonomy\Author::register();
 		}
+
+		if ( Config::get( 'article_topper' ) ) {
+			Meta\ArticleTopper::register();
+		}
 	}
 }
 

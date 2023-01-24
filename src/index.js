@@ -5,9 +5,12 @@
  */
 import { registerPlugin } from '@wordpress/plugins';
 
+import './ups-editorial.scss';
+
+import * as ArticleTopperPanel from './plugins/article-topper-panel';
 import * as BylinesPanel from './plugins/bylines-panel';
 
-[BylinesPanel]
+[ArticleTopperPanel, BylinesPanel]
   .filter(({ enabled }) => enabled)
   .forEach(({ name, render, icon }) => {
     registerPlugin(name, {

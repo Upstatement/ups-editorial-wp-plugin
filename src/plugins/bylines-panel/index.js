@@ -147,6 +147,4 @@ export const render = () => {
   );
 };
 
-// Export the status of this component. This can be disabled by setting the
-// `bylines` config value to `false` in your theme's `ups-editorial.php` file.
 export const enabled = window.ups_editorial?.bylines;

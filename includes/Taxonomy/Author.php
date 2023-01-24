@@ -1,7 +1,7 @@
 <?php
 /**
  * Set up the author taxonomy which will drive the bylines behavior for posts. Bylines are exposed via the
- * `bylines-panel` plugin defined in the JavaScript `src/` directory.
+ * `bylines-panel` plugin defined in the JavaScript directory (`/src`).
  *
  * @package Upstatement\Editorial
  */

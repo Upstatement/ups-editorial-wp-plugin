@@ -71,7 +71,8 @@ To set up a configuration file, add a `ups-editorial.php` file to your theme's r
  */
 
 return array(
-	'bylines' => false,
+	'bylines'        => true,
+  'article_topper' => true,
 );
 ```
 
@@ -84,6 +85,14 @@ return array(
 **Default value:** `true`
 
 Enable or disable the plugin's `Author` taxonomy, as well as the control mechanism for setting bylines for an individual post.
+
+#### `article_topper`
+
+**Allowed types:** `boolean`
+
+**Default value:** `true`
+
+Enable or disable the registration of fields for article toppers and the Gutenberg panel that controls those fields.
 
 ## Troubleshooting
 

@@ -15,7 +15,7 @@
   }
 
   .author-list {
-    margin-bottom: 1rem;
+    margin-bottom: var(--ups-spacing-base);
   }
 
   .author-list__item {
@@ -27,7 +27,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: .5em;
+    margin-right: var(--ups-spacing-sm);
 
     .button-up,
     .button-down {

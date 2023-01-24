@@ -7,6 +7,9 @@
 
 namespace Upstatement\Editorial;
 
+use WP_Post;
+use WP_Term;
+
 /**
  * Helper function for themes to retrieve byline authors for a given post.
  *
@@ -44,4 +47,31 @@ function get_post_bylines( $post = null, $field = null ) {
 	}
 
 	return $authors;
+}
+
+
+/**
+ * Helper function for themes to retrieve overline category a given post.
+ *
+ * @param WP_Post|int $post Post to retrieve authors for. Optional. Leave blank to use the current global post.
+ *
+ * @return WP_Term|null Category used as overline
+ */
+function get_post_overline( $post = null ) {
+	$post = get_post( $post );
+	if ( ! $post ) {
+		return null;
+	}
+
+	$category_id = get_post_meta( $post->ID, 'topper_overline', true );
+	if ( ! $category_id ) {
+		return null;
+	}
+
+	$category = get_category( $category_id );
+	if ( ! $category instanceof WP_Term ) {
+		return null;
+	}
+
+	return $category;
 }
