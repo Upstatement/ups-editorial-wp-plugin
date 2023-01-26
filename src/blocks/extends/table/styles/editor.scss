@@ -1,0 +1,7 @@
+.block-editor-block-inspector {
+  .block-editor-table {
+    & ~ .block-editor-panel-color-gradient-settings {
+      display: none;
+    }
+  }
+}

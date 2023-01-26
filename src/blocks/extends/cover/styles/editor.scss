@@ -1,0 +1,18 @@
+.block-editor-block-inspector {
+  // Hide the fixed background option for the cover block
+  .block-editor-cover {
+    & + .components-panel__body {
+      .components-toggle-control {
+        display: none;
+      }
+    }
+    // Hide overlay settings
+    & ~ .block-editor-panel-color-gradient-settings {
+      display: none;
+    }
+    // Hide dimension settings
+    & ~ .components-panel__body:nth-of-type(3) {
+      display: none;
+    }
+  }
+}

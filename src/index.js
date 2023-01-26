@@ -1,14 +1,19 @@
-/**
- * Entrypoint for custom plugins.
- *
- * @see https://www.npmjs.com/package/@wordpress/plugins
- */
 import { registerPlugin } from '@wordpress/plugins';
+import {
+  unregisterBlockStyle,
+  unregisterBlockVariation,
+  getBlockVariations,
+} from '@wordpress/blocks';
+import domReady from '@wordpress/dom-ready';
+import { addFilter } from '@wordpress/hooks';
+import { unregisterFormatType, registerFormatType } from '@wordpress/rich-text';
 
-import './ups-editorial.scss';
+import './editor.scss';
 
-import * as ArticleTopperPanel from './plugins/article-topper-panel';
-import * as BylinesPanel from './plugins/bylines-panel';
+// ========================
+// Plugins
+
+import { ArticleTopperPanel, BylinesPanel } from './plugins';
 
 [ArticleTopperPanel, BylinesPanel]
   .filter(({ enabled }) => enabled)
@@ -18,3 +23,57 @@ import * as BylinesPanel from './plugins/bylines-panel';
       render,
     });
   });
+
+// ========================
+// Blocks
+
+import {
+  Button,
+  Cover,
+  File,
+  Gallery,
+  ImageLayout,
+  RelatedArticles,
+  Table,
+  Video,
+} from './blocks/extends';
+
+/**
+ * Extend existing Gutenberg blocks using block filters
+ *
+ * @see https://www.npmjs.com/package/@wordpress/hooks
+ */
+[Button, Cover, File, Gallery, ImageLayout, RelatedArticles, Table, Video].forEach(hooks => {
+  hooks.forEach(({ hookName, namespace, callback }) => {
+    addFilter(hookName, namespace, callback);
+  });
+});
+
+domReady(() => {
+  // Remove quote style panel
+  unregisterBlockStyle('core/quote', 'default');
+  unregisterBlockStyle('core/quote', 'large');
+
+  // Remove pull quote style panel
+  unregisterBlockStyle('core/pullquote', 'default');
+  unregisterBlockStyle('core/pullquote', 'solid-color');
+
+  // Remove separator style panel
+  unregisterBlockStyle('core/separator', 'default');
+  unregisterBlockStyle('core/separator', 'wide');
+  unregisterBlockStyle('core/separator', 'dots');
+
+  // Remove table style panel
+  unregisterBlockStyle('core/table', 'regular');
+  unregisterBlockStyle('core/table', 'stripes');
+
+  // Updating format type
+  const image = unregisterFormatType('core/image');
+  image.className = 'wp-rich-text-inline-image';
+  registerFormatType('core/image', image);
+
+  // Unregister all the Embed block variations.
+  getBlockVariations('core/embed').forEach(variation => {
+    unregisterBlockVariation('core/embed', variation.name);
+  });
+});

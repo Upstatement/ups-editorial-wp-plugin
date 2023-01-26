@@ -1,0 +1,45 @@
+@import 'extends/button/styles/editor';
+@import 'extends/cover/styles/editor';
+@import 'extends/gallery/styles/editor';
+@import 'extends/table/styles/editor';
+
+.wp-block {
+  &:not([data-resized='true']) {
+    &[data-align='left'],
+    &[data-align='right'] {
+      .is-block-content {
+        max-width: 50%;
+      }
+    }
+  }
+
+  .wp-block-pullquote {
+    text-align: left;
+
+    .wp-block-pullquote__citation,
+    .wp-block-pullquote cite,
+    .wp-block-pullquote footer {
+      text-transform: none;
+    }
+  }
+
+  .wp-block-quote__citation,
+  .wp-block-pullquote__citation {
+    &:before {
+      position: absolute;
+      left: 0;
+      content: '—';
+      display: block;
+      font-weight: 500;
+    }
+  }
+  .wp-block-quote__citation {
+    padding-left: 20px;
+  }
+  .wp-block-pullquote__citation {
+    padding-left: 25px;
+    &:before {
+      left: 20px;
+    }
+  }
+}

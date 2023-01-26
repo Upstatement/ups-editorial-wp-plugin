@@ -22,6 +22,8 @@ class Assets {
 	/**
 	 * Enqueue assets for the block editor.
 	 *
+	 * @see https://developer.wordpress.org/reference/hooks/enqueue_block_editor_assets/
+	 *
 	 * @return void
 	 */
 	public function enqueue_for_block_editor() {
@@ -37,7 +39,7 @@ class Assets {
 		wp_localize_script( 'upstatement-editorial-js', 'ups_editorial', Config::get_all() );
 
 		wp_enqueue_style(
-			'upstatement-editorial-style',
+			'upstatement-editorial-editor-style',
 			plugins_url( '/build/index.css', UPS_EDITORIAL_PLUGIN_FILE ),
 			array( 'wp-components' ),
 			$blocks_asset['version']
