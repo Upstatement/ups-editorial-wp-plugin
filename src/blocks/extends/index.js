@@ -1,4 +1,3 @@
-export { default as Button } from './button';
 export { default as Cover } from './cover';
 export { default as File } from './file';
 export { default as Gallery } from './gallery';

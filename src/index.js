@@ -27,23 +27,14 @@ import { ArticleTopperPanel, BylinesPanel } from './plugins';
 // ========================
 // Blocks
 
-import {
-  Button,
-  Cover,
-  File,
-  Gallery,
-  ImageLayout,
-  RelatedArticles,
-  Table,
-  Video,
-} from './blocks/extends';
+import { Cover, File, Gallery, ImageLayout, RelatedArticles, Table, Video } from './blocks/extends';
 
 /**
  * Extend existing Gutenberg blocks using block filters
  *
  * @see https://www.npmjs.com/package/@wordpress/hooks
  */
-[Button, Cover, File, Gallery, ImageLayout, RelatedArticles, Table, Video].forEach(hooks => {
+[Cover, File, Gallery, ImageLayout, RelatedArticles, Table, Video].forEach(hooks => {
   hooks.forEach(({ hookName, namespace, callback }) => {
     addFilter(hookName, namespace, callback);
   });
