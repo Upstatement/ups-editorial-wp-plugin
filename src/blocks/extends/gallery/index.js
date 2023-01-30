@@ -11,7 +11,7 @@ const registerBlockTypeHook = {
   hookName: 'blocks.registerBlockType',
   namespace: 'ups/extend/gallery-settings',
 
-  callback: function(settings, name) {
+  callback(settings, name) {
     if (name !== 'core/gallery') {
       return settings;
     }
@@ -64,6 +64,6 @@ const blockEditHook = {
   ),
 };
 
-const hooks = [registerBlockTypeHook, blockEditHook];
+export const hooks = [registerBlockTypeHook, blockEditHook];
 
-export default hooks;
+export const name = 'gallery';

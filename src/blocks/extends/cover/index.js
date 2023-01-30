@@ -11,7 +11,7 @@ const registerBlockTypeHook = {
   hookName: 'blocks.registerBlockType',
   namespace: 'ups/extend/cover-settings',
 
-  callback: function(settings, name) {
+  callback(settings, name) {
     if (name !== 'core/cover') {
       return settings;
     }
@@ -61,6 +61,6 @@ const blockEditHook = {
   ),
 };
 
-const hooks = [registerBlockTypeHook, blockEditHook];
+export const hooks = [registerBlockTypeHook, blockEditHook];
 
-export default hooks;
+export const name = 'cover';

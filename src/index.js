@@ -34,11 +34,16 @@ import { Cover, File, Gallery, ImageLayout, RelatedArticles, Table, Video } from
  *
  * @see https://www.npmjs.com/package/@wordpress/hooks
  */
-[Cover, File, Gallery, ImageLayout, RelatedArticles, Table, Video].forEach(hooks => {
-  hooks.forEach(({ hookName, namespace, callback }) => {
-    addFilter(hookName, namespace, callback);
+[Cover, File, Gallery, ImageLayout, RelatedArticles, Table, Video]
+  .filter(({ name }) => {
+    const activeExtends = window.ups_editorial?.extended_blocks;
+    return activeExtends && activeExtends.indexOf(name) > 1;
+  })
+  .forEach(({ hooks }) => {
+    hooks.forEach(({ hookName, namespace, callback }) => {
+      addFilter(hookName, namespace, callback);
+    });
   });
-});
 
 domReady(() => {
   // Remove quote style panel

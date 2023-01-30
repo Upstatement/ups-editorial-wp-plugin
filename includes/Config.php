@@ -15,13 +15,24 @@ class Config {
 	 */
 	private static array $defaults = array(
 		// Enable the bylines functionality, including the `Authors` taxonomy.
-		'bylines'          => true,
+		'bylines'           => true,
 
 		// Enable the article topper fields.
-		'article_topper'   => true,
+		'article_topper'    => true,
 
 		// Enable the credit field for attachments.
 		'attachment_credit' => true,
+
+		// Enable the extended blocks.
+		'extended_blocks'   => array(
+			'cover',
+			'file',
+			'gallery',
+			'image-layout',
+			'related-articles',
+			'table',
+			'video',
+		),
 	);
 
 	/**

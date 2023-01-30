@@ -7,7 +7,7 @@ const registerBlockTypeHook = {
   hookName: 'blocks.registerBlockType',
   namespace: 'ups/extend/file-settings',
 
-  callback: function(settings, name) {
+  callback(settings, name) {
     if (name !== 'core/file') {
       return settings;
     }
@@ -23,6 +23,6 @@ const registerBlockTypeHook = {
   },
 };
 
-const hooks = [registerBlockTypeHook];
+export const hooks = [registerBlockTypeHook];
 
-export default hooks;
+export const name = 'file';
