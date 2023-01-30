@@ -15,22 +15,14 @@ A WordPress plugin for enhancing the editorial experience, including some common
 
 ## What This Plugin Does
 
-The purpose of this plugin is to tailor the Gutenberg editor experience to be better suited to editors using their WordPress theme. Features added as a part of this plugin fall into two categories: block modifications (including new blocks and updates to core blocks) and editor plugins.
+The purpose of this plugin is to tailor the Gutenberg editor experience to be better suited to editors using their WordPress theme. Features added as a part of this plugin fall into two categories: block modifications and editor plugins.
 
 ### Blocks
 
-#### New blocks
-
-- [Image Block](./src/blocks/custom/image/index.js) (replaces the core image block)
-
-  - Adds support for the `Alt Text` and `Credit` attachment fields in the media library
-  - Updates the default caption state to pull from the `Caption` attachment field
-  - Adds support for the custom Modal Gallery component in the main Editorial theme
-  - Removes unneeded features from core image block, including border styles
-
 #### Extended Blocks
 
-- [Button](./src/blocks/extends/button/index.js)
+The following blocks are extended typically at the registration hook (`blocks.registerBlockType`) to limit the number of available options for an editor. Some blocks also hook into the edit lifecycle (via the `editor.BlockEdit` hook) to add additional classes and structure to the editor markup so as to be able to control certain aspects of the block's settings with css.
+
 - [Cover](./src/blocks/extends/cover/index.js)
 - [File](./src/blocks/extends/file/index.js)
 - [Gallery](./src/blocks/extends/gallery/index.js)
