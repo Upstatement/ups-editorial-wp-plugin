@@ -71,6 +71,15 @@ return array(
   'bylines'           => true,
   'article_topper'    => true,
   'attachment_credit' => true,
+  'extended_blocks'   => array(
+		'cover',
+		'file',
+		'gallery',
+		'image-layout',
+		'related-articles',
+		'table',
+		'video',
+	),
 );
 ```
 
@@ -99,6 +108,26 @@ Enable or disable the registration of fields for article toppers and the Gutenbe
 **Default value:** `true`
 
 Enable or disable the registration of a `credit` field for attachments.
+
+#### `extended_blocks`
+
+**Allowed types:** `array`
+
+**Default value:**
+
+```php
+array(
+  'cover',
+  'file',
+  'gallery',
+  'image-layout',
+  'related-articles',
+  'table',
+  'video',
+)
+```
+
+A list of blocks that are extended by the plugin. To disable the extension of a certain block, exclude it from this array.
 
 ## Theme API
 
