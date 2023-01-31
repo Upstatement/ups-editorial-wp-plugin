@@ -230,7 +230,7 @@ Content retrieved from post body:
 
 ## Local Development
 
-The Github repository includes a docker setup that will allow you to run a basic WordPress installation with the Upstatement Editorial plugin installed. You'll need to ensure that you have [Docker Desktop](https://www.docker.com/products/docker-desktop) installed on your machine first.
+To make changes to this plugin, you can download this repository and add it to the `plugins/` directory of any running WordPress instance. You'll also need to perform some setup steps to ensure that you have all the built dependencies:
 
 To start working locally, you'll need the following things on your machine:
 
@@ -251,16 +251,16 @@ Once the above are installed, you can get set up with the following steps:
    npm install
    ```
 
-3. Watch the plugin files for changes:
+3. Install composer dependencies and generate autoloaders:
+
+   ```shell
+   composer install
+   ```
+
+4. Watch the plugin files for changes:
 
    ```shell
    npm run start
-   ```
-
-4. Start the docker containers (note that the `-d` flag will run the container in the background):
-
-   ```shell
-   docker-compose up -d --build
    ```
 
 You can build the static front-end assets at any time with the following script:
