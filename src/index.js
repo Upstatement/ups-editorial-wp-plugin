@@ -37,7 +37,7 @@ import { Cover, File, Gallery, ImageLayout, RelatedArticles, Table, Video } from
 [Cover, File, Gallery, ImageLayout, RelatedArticles, Table, Video]
   .filter(({ name }) => {
     const activeExtends = window.ups_editorial?.extended_blocks;
-    return activeExtends && activeExtends.indexOf(name) > 1;
+    return activeExtends && activeExtends.indexOf(name) > -1;
   })
   .forEach(({ hooks }) => {
     hooks.forEach(({ hookName, namespace, callback }) => {
