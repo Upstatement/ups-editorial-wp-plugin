@@ -32,7 +32,7 @@ class UpsEditorial {
 		Config::read();
 		Assets::register();
 
-		if ( Config::get( 'bylines' ) ) {
+		if ( Config::get( 'author_panel' ) ) {
 			Taxonomy\Author::register();
 		}
 

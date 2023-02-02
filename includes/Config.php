@@ -14,17 +14,17 @@ class Config {
 	 * @var array
 	 */
 	private static array $defaults = array(
-		// Enable the bylines functionality, including the `Authors` taxonomy.
-		'bylines'           => true,
+		// Enable the author controls, including registering the `Authors` taxonomy.
+		'author_panel'         => true,
 
 		// Enable the article topper fields.
-		'article_topper'    => true,
+		'article_topper_panel' => true,
 
 		// Enable the credit field for attachments.
-		'attachment_credit' => true,
+		'attachment_credit'    => true,
 
 		// Enable the extended blocks.
-		'extended_blocks'   => array(
+		'extended_blocks'      => array(
 			'cover',
 			'file',
 			'gallery',

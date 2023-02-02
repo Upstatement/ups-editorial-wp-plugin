@@ -1,2 +1,2 @@
 export * as ArticleTopperPanel from './article-topper-panel';
-export * as BylinesPanel from './bylines-panel';
+export * as AuthorsPanel from './authors-panel';

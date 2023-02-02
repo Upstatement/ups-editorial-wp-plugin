@@ -1,12 +1,14 @@
 <?php
 /**
- * Set up the author taxonomy which will drive the bylines behavior for posts. Bylines are exposed via the
- * `bylines-panel` plugin defined in the JavaScript directory (`/src`).
+ * Registers the Author taxonomy and enable the Author panel in the editor. The Author panel is exposed via the
+ * `author-panel` plugin defined in the JavaScript directory (`/src`).
  *
  * @package Upstatement\Editorial
  */
 
 namespace Upstatement\Editorial\Taxonomy;
+
+use function Upstatement\Editorial\get_post_authors;
 
 class Author {
 	/**
@@ -17,11 +19,11 @@ class Author {
 	const NAME = 'ups_authors';
 
 	/**
-	 * Key for the bylines meta value.
+	 * Key for the meta value that holds the list of authors.
 	 *
 	 * @var string
 	 */
-	const BYLINES_META_KEY = 'bylines';
+	const AUTHOR_META_KEY = 'ups_meta__authors';
 
 	/**
 	 * Register.
@@ -103,7 +105,7 @@ class Author {
 	public function register_post_meta() {
 		register_post_meta(
 			'post',
-			self::BYLINES_META_KEY,
+			self::AUTHOR_META_KEY,
 			array(
 				'show_in_rest' => array(
 					'schema' => array(
@@ -120,7 +122,7 @@ class Author {
 	}
 
 	/**
-	 * Sync byline post meta to taxonomy terms when meta is added, updated or deleted.
+	 * Sync author post meta to taxonomy terms when meta is added, updated or deleted.
 	 *
 	 * @see https://developer.wordpress.org/reference/hooks/added_meta_type_meta/
 	 *
@@ -132,7 +134,7 @@ class Author {
 	 * @return void
 	 */
 	public function handle_post_meta_saved( $meta_id, $post_id, $meta_key, $meta_value ) {
-		if ( self::BYLINES_META_KEY !== $meta_key ) {
+		if ( self::AUTHOR_META_KEY !== $meta_key ) {
 			return;
 		}
 
@@ -148,14 +150,14 @@ class Author {
 	}
 
 	/**
-	 * Sync byline taxonomy terms to post meta when term relationships are set.
+	 * Sync author taxonomy terms to post meta when term relationships are set.
 	 *
 	 * @see https://developer.wordpress.org/reference/hooks/set_object_terms/
 	 *
 	 * Use cases:
 	 * - Quick Edit
 	 * - Bulk Edit
-	 * - Anywhere a byline term is saved outside of the post editor context.
+	 * - Anywhere a author term is saved outside of the post editor context.
 	 *
 	 * @param int    $object_id  Object ID.
 	 * @param array  $terms      An array of object terms.
@@ -172,9 +174,9 @@ class Author {
 		$this->remove_post_meta_saved_actions();
 
 		if ( empty( $tt_ids ) ) {
-			delete_post_meta( $object_id, self::BYLINES_META_KEY );
+			delete_post_meta( $object_id, self::AUTHOR_META_KEY );
 		} else {
-			update_post_meta( $object_id, self::BYLINES_META_KEY, $tt_ids );
+			update_post_meta( $object_id, self::AUTHOR_META_KEY, $tt_ids );
 		}
 
 		$this->add_post_meta_saved_actions();
@@ -190,9 +192,9 @@ class Author {
 	public function handle_display_author( $display_name ) {
 		if ( 'post' === get_post_type() ) {
 			$post    = get_post();
-			$bylines = \Upstatement\Editorial\get_post_bylines( $post, 'name' );
-			if ( $bylines ) {
-				return implode( ', ', $bylines );
+			$authors = get_post_authors( $post, 'name' );
+			if ( $authors ) {
+				return implode( ', ', $authors );
 			}
 		}
 

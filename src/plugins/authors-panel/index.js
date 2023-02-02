@@ -1,5 +1,5 @@
 /**
- * Sets up the panel in the Gutenberg editor to manage bylines. The `ups_author`
+ * Sets up the panel in the Gutenberg editor to manage authors. The `ups_author`
  * taxonomy is defined in the \Upstatement\Editorial\Taxonomy\Author PHP class.
  */
 
@@ -15,10 +15,12 @@ import { AUTHOR_REORDER_DIRECTION } from './constants';
 import AuthorSelect from './components/AuthorSelect';
 import AuthorList from './components/AuthorList';
 
-import './bylines-panel.scss';
+import './authors-panel.scss';
 
 const META = {
-  bylines: 'bylines',
+  // This should match the meta key value defined as the AUTHOR_META_KEY constant in the
+  // \Upstatement\Editorial\Taxonomy\Author class.
+  authors: 'ups_meta__authors',
 };
 
 domReady(() => {
@@ -26,14 +28,14 @@ domReady(() => {
   dispatch('core/edit-post').removeEditorPanel('taxonomy-panel-ups_authors');
 });
 
-const BylinesPanel = () => {
+const AuthorsPanel = () => {
   const [meta, setMeta] = useMetaReducer();
 
   const [authors, setAuthors] = useState([]);
   const authorIds = useMemo(() => authors.map(({ id }) => id), [authors]);
 
   /**
-   * Add an author to post bylines.
+   * Add an author.
    * @param {Object} author Author to add
    */
   const addAuthor = author => {
@@ -42,7 +44,7 @@ const BylinesPanel = () => {
   };
 
   /**
-   * Remove an author from post bylines.
+   * Remove an author.
    * @param {Object} author Author to remove
    */
   const removeAuthor = author => {
@@ -89,13 +91,13 @@ const BylinesPanel = () => {
   };
 
   /**
-   * Fetch author data for existing bylines on load.
+   * Fetch author data on load.
    *
-   * Bylines are stored in post meta as an array of author term IDs. This
-   * backfils with full author details from the term.
+   * Authors are stored in post meta as an array of author term IDs. This backfulls
+   * with full author details from the term.
    */
   useEffect(() => {
-    const selectedAuthorIds = meta[META.bylines] || [];
+    const selectedAuthorIds = meta[META.authors] || [];
     if (selectedAuthorIds.length) {
       loadAuthors(selectedAuthorIds);
     }
@@ -106,7 +108,7 @@ const BylinesPanel = () => {
    */
   useEffect(() => {
     setMeta({
-      [META.bylines]: authorIds,
+      [META.authors]: authorIds,
     });
   }, [authorIds]);
 
@@ -141,10 +143,10 @@ export const render = () => {
   }
 
   return (
-    <PluginDocumentSettingPanel name={name} title="Authors" className="bylines-panel">
-      <BylinesPanel />
+    <PluginDocumentSettingPanel name={name} title="Authors" className="authors-panel">
+      <AuthorsPanel />
     </PluginDocumentSettingPanel>
   );
 };
 
-export const enabled = window.ups_editorial?.bylines;
+export const enabled = window.ups_editorial?.author_panel;

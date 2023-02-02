@@ -35,7 +35,7 @@ The following blocks are extended typically at the registration hook (`blocks.re
 
 ### Editor Plugins
 
-Our main Gutenberg "plugin" adds two panels to the main sidebar of posts: the Article Topper & Bylines panels.
+Our main Gutenberg "plugin" adds two panels to the main sidebar of posts: the Article Topper & Authors panels.
 
 #### Article Topper Panel
 
@@ -45,9 +45,9 @@ The article topper panel controls article post metadata concerned with the artic
 - `Navigation theme`: When paired with dark background image toppers, an already dark-themed nav can appear invisible. This option allows for lighter navigation themes
 - `Overline`: Choose a primary category for your article to allow for better recirculation amongst common themes
 
-#### Bylines Panel
+#### Authors Panel
 
-The bylines panel allows editors to assign multiple authors to the author byline. This process starts with the `Authors` section under `Posts`, where you can create author profiles.
+The Authors panel allows editors to assign multiple authors to the author byline. This process starts with the `Authors` section under `Posts`, where you can create author profiles.
 
 These authors also serve as taxonomies for your articles, so archive pages full of an author's own content are auto-generated on your behalf.
 
@@ -68,10 +68,10 @@ To set up a configuration file, add a `ups-editorial.php` file to your theme's r
  */
 
 return array(
-  'bylines'           => true,
-  'article_topper'    => true,
-  'attachment_credit' => true,
-  'extended_blocks'   => array(
+  'author_panel'         => true,
+  'article_topper_panel' => true,
+  'attachment_credit'    => true,
+  'extended_blocks'      => array(
 		'cover',
 		'file',
 		'gallery',
@@ -85,15 +85,15 @@ return array(
 
 ### Configuration
 
-#### `bylines`
+#### `author_panel`
 
 **Allowed types:** `boolean`
 
 **Default value:** `true`
 
-Enable or disable the plugin's `Author` taxonomy, as well as the control mechanism for setting bylines for an individual post.
+Enable or disable the plugin's `Author` taxonomy, as well as the Gutenberg editor panel containing the mechanism to add and manage authors for an individual post.
 
-#### `article_topper`
+#### `article_topper_panel`
 
 **Allowed types:** `boolean`
 
@@ -136,18 +136,18 @@ There are a few globally-available functions that can be used by your theme to r
 It is recommended that your theme implement these functions wrapped by a `function_exists` check to prevent undefined errors in the case that the plugin is disabled. For example:
 
 ```php
-if ( function_exists( 'Upstatement\Editorial\get_post_bylines' ) ) {
-  $bylines = \Upstatement\Editorial\get_post_bylines();
+if ( function_exists( 'Upstatement\Editorial\get_post_authors' ) ) {
+  $authors = \Upstatement\Editorial\get_post_authors();
   ...
 ```
 
-### `get_post_bylines`
+### `get_post_authors`
 
 ```php
-get_post_bylines( WP_Post $post = null, string $field = null) : array | null
+get_post_authors( WP_Post $post = null, string $field = null) : array | null
 ```
 
-Retrieve the byline for a post.
+Retrieve a list of authors for a post.
 
 #### Parameters
 

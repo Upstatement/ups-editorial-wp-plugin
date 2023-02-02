@@ -13,9 +13,9 @@ import './editor.scss';
 // ========================
 // Plugins
 
-import { ArticleTopperPanel, BylinesPanel } from './plugins';
+import { ArticleTopperPanel, AuthorsPanel } from './plugins';
 
-[ArticleTopperPanel, BylinesPanel]
+[ArticleTopperPanel, AuthorsPanel]
   .filter(({ enabled }) => enabled)
   .forEach(({ name, render, icon }) => {
     registerPlugin(name, {
