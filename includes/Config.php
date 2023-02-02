@@ -53,6 +53,8 @@ class Config {
 		if ( file_exists( $config_file ) ) {
 			$config        = require_once $config_file;
 			self::$options = wp_parse_args( $config, self::$defaults );
+		} else {
+			self::$options = self::$defaults;
 		}
 	}
 
