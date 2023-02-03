@@ -48,11 +48,7 @@ import { Cover, File, Gallery, ImageLayout, RelatedArticles, Table, Video } from
 domReady(() => {
   // Remove quote style panel
   unregisterBlockStyle('core/quote', 'default');
-  unregisterBlockStyle('core/quote', 'large');
-
-  // Remove pull quote style panel
-  unregisterBlockStyle('core/pullquote', 'default');
-  unregisterBlockStyle('core/pullquote', 'solid-color');
+  unregisterBlockStyle('core/quote', 'plain');
 
   // Remove separator style panel
   unregisterBlockStyle('core/separator', 'default');
