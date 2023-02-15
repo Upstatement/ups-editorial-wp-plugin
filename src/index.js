@@ -46,10 +46,6 @@ import { Cover, File, Gallery, ImageLayout, RelatedArticles, Table, Video } from
   });
 
 domReady(() => {
-  // Remove button style panel
-  unregisterBlockStyle('core/button', 'fill');
-  unregisterBlockStyle('core/button', 'outline');
-
   // Remove image style panel
   unregisterBlockStyle('core/image', 'default');
   unregisterBlockStyle('core/image', 'rounded');
