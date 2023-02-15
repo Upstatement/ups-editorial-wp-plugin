@@ -46,6 +46,10 @@ import { Cover, File, Gallery, ImageLayout, RelatedArticles, Table, Video } from
   });
 
 domReady(() => {
+  // Remove image style panel
+  unregisterBlockStyle('core/image', 'default');
+  unregisterBlockStyle('core/image', 'rounded');
+
   // Remove quote style panel
   unregisterBlockStyle('core/quote', 'default');
   unregisterBlockStyle('core/quote', 'plain');
