@@ -241,4 +241,4 @@ export const render = () => {
   );
 };
 
-export const enabled = window.ups_editorial?.article_topper;
+export const enabled = window.ups_editorial?.article_topper_panel;

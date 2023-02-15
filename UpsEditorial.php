@@ -36,7 +36,7 @@ class UpsEditorial {
 			Taxonomy\Author::register();
 		}
 
-		if ( Config::get( 'article_topper' ) ) {
+		if ( Config::get( 'article_topper_panel' ) ) {
 			Meta\ArticleTopper::register();
 		}
 
