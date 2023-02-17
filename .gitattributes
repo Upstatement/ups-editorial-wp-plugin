@@ -1,0 +1,4 @@
+.babelrc export-ignore
+.eslintrc export-ignore
+.nvmrc export-ignore
+prettier.config.js export-ignore
