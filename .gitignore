@@ -1,6 +1,3 @@
-# built assets
-/build
-
 # local environment
 .env
 error.log
