@@ -1,4 +1,206 @@
-:root{--ups-color-blue:#0075af;--ups-color-light-blue:#f3f5f6;--ups-color-gray:#555d66;--ups-color-white:#fff;--ups-color-black:#000;--ups-border-radius-sm:3px;--ups-font-size-base:13px;--ups-line-height:1.4;--ups-spacing-xs:4px;--ups-spacing-sm:8px;--ups-spacing-base:16px}.block-editor-block-inspector .block-editor-cover+.components-panel__body .components-toggle-control,.block-editor-block-inspector .block-editor-cover~.block-editor-panel-color-gradient-settings,.block-editor-block-inspector .block-editor-cover~.components-panel__body:nth-of-type(3),.block-editor-block-inspector .block-editor-gallery+.components-panel__body .components-range-control,.block-editor-block-inspector .block-editor-table~.block-editor-panel-color-gradient-settings{display:none}.wp-block:not([data-resized=true])[data-align=left] .is-block-content,.wp-block:not([data-resized=true])[data-align=right] .is-block-content{max-width:50%}.wp-block .wp-block-pullquote{text-align:left}.wp-block .wp-block-pullquote .wp-block-pullquote cite,.wp-block .wp-block-pullquote .wp-block-pullquote footer,.wp-block .wp-block-pullquote .wp-block-pullquote__citation{text-transform:none}.wp-block .wp-block-pullquote__citation:before,.wp-block .wp-block-quote__citation:before{content:"—";display:block;font-weight:500;left:0;position:absolute}.wp-block .wp-block-quote__citation{padding-left:20px}.wp-block .wp-block-pullquote__citation{padding-left:25px}.wp-block .wp-block-pullquote__citation:before{left:20px}
-.maSOKrYHsPNjYS48Subg .bdZkY38M12yKa_e1qE26{left:50%;position:absolute;top:50%;-webkit-transform:translate3d(-50%,-50%,0);transform:translate3d(-50%,-50%,0);z-index:20}.maSOKrYHsPNjYS48Subg .bdZkY38M12yKa_e1qE26.E8Cp0rkj2671OHfxXe8u{opacity:0}.maSOKrYHsPNjYS48Subg .bdZkY38M12yKa_e1qE26.E8Cp0rkj2671OHfxXe8u:focus-within{opacity:1}.maSOKrYHsPNjYS48Subg .bdZkY38M12yKa_e1qE26 .aGG4rEifuDBRA3tip1oz{background-color:var(--ups-color-white)}.maSOKrYHsPNjYS48Subg .bdZkY38M12yKa_e1qE26 .aGG4rEifuDBRA3tip1oz:not(:last-child){margin-right:var(--ups-spacing-sm)}.maSOKrYHsPNjYS48Subg .jH9dbPsKRMm111cnIk5Q{position:relative;width:100%}.maSOKrYHsPNjYS48Subg .jH9dbPsKRMm111cnIk5Q .Rar0slatbEEHoCGgrjU8{max-width:100%}.maSOKrYHsPNjYS48Subg .jH9dbPsKRMm111cnIk5Q .Rar0slatbEEHoCGgrjU8.gATY0FnbsweZ7sZIAVJk{width:100%}.maSOKrYHsPNjYS48Subg .jH9dbPsKRMm111cnIk5Q .ETRVRNdkXWlPy4w6oYiY{background-color:var(--ups-color-light-blue);border:1px solid var(--ups-color-blue);border-radius:var(--ups-border-radius-sm);padding-top:66.66666667%;width:100%}.maSOKrYHsPNjYS48Subg .jH9dbPsKRMm111cnIk5Q .ETRVRNdkXWlPy4w6oYiY .c3sb5EcghiPzJEysktBQ{left:50%;position:absolute;top:50%;-webkit-transform:translate3d(-50%,-50%,0);transform:translate3d(-50%,-50%,0)}.maSOKrYHsPNjYS48Subg .jH9dbPsKRMm111cnIk5Q:hover .E8Cp0rkj2671OHfxXe8u{opacity:1}.maSOKrYHsPNjYS48Subg:not(.ha_Y5emLgLO3MU0VsSHo) .Rar0slatbEEHoCGgrjU8{border-radius:var(--ups-border-radius-sm);max-height:500px}
-.article-topper-panel .row{margin-bottom:var(--ups-spacing-base)}.article-topper-panel .topper-type{display:-webkit-box;display:-ms-flexbox;display:flex}.article-topper-panel .topper-type .topper-type__control{-webkit-box-flex:2;-ms-flex:2;flex:2}.article-topper-panel .topper-preview{-webkit-box-flex:1;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex:1;flex:1;margin-left:var(--ups-spacing-base);margin-top:calc(var(--ups-font-size-base)*var(--ups-line-height) + var(--ups-spacing-xs));width:100%}.article-topper-panel .topper-preview .topper-preview__window{display:block;width:100%}
-.authors-panel .author-list,.authors-panel .author-suggestions{padding-left:0}.authors-panel .author-list button,.authors-panel .author-suggestions button{text-decoration:none}.authors-panel .author-suggestion__button{display:block;padding-left:0;padding-right:0}.authors-panel .author-list{margin-bottom:var(--ups-spacing-base)}.authors-panel .author-list__item,.authors-panel .author-list__move-menu{-webkit-box-align:center;-ms-flex-align:center;align-items:center;display:-webkit-box;display:-ms-flexbox;display:flex}.authors-panel .author-list__move-menu{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;margin-right:var(--ups-spacing-sm)}.authors-panel .author-list__move-menu .button-down,.authors-panel .author-list__move-menu .button-up{height:18px}.authors-panel .author-list__move-menu .button-down svg,.authors-panel .author-list__move-menu .button-up svg{height:15px;width:15px}.authors-panel .author-list__move-menu .button-up{border-radius:3px 3px 0 0}.authors-panel .author-list__move-menu .button-down{border-radius:0 0 3px 3px}
+/*!****************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/editor.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+:root {
+  --ups-color-blue: #0075af;
+  --ups-color-light-blue: #f3f5f6;
+  --ups-color-gray: #555d66;
+  --ups-color-white: #ffffff;
+  --ups-color-black: #000000;
+  --ups-border-radius-sm: 3px;
+  --ups-font-size-base: 13px;
+  --ups-line-height: 1.4;
+  --ups-spacing-xs: 4px;
+  --ups-spacing-sm: 8px;
+  --ups-spacing-base: 16px;
+}
+
+.block-editor-block-inspector .block-editor-cover + .components-panel__body .components-toggle-control {
+  display: none;
+}
+.block-editor-block-inspector .block-editor-cover ~ .block-editor-panel-color-gradient-settings {
+  display: none;
+}
+.block-editor-block-inspector .block-editor-cover ~ .components-panel__body:nth-of-type(3) {
+  display: none;
+}
+
+.block-editor-block-inspector .block-editor-gallery + .components-panel__body .components-range-control {
+  display: none;
+}
+
+.block-editor-block-inspector .block-editor-table ~ .block-editor-panel-color-gradient-settings {
+  display: none;
+}
+
+.wp-block:not([data-resized=true])[data-align=left] .is-block-content, .wp-block:not([data-resized=true])[data-align=right] .is-block-content {
+  max-width: 50%;
+}
+.wp-block .wp-block-pullquote {
+  text-align: left;
+}
+.wp-block .wp-block-pullquote .wp-block-pullquote__citation,
+.wp-block .wp-block-pullquote .wp-block-pullquote cite,
+.wp-block .wp-block-pullquote .wp-block-pullquote footer {
+  text-transform: none;
+}
+.wp-block .wp-block-quote__citation:before,
+.wp-block .wp-block-pullquote__citation:before {
+  position: absolute;
+  left: 0;
+  content: "—";
+  display: block;
+  font-weight: 500;
+}
+.wp-block .wp-block-quote__citation {
+  padding-left: 20px;
+}
+.wp-block .wp-block-pullquote__citation {
+  padding-left: 25px;
+}
+.wp-block .wp-block-pullquote__citation:before {
+  left: 20px;
+}
+/*!*****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/components/MediaControl/mediaControl.module.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************/
+.maSOKrYHsPNjYS48Subg .bdZkY38M12yKa_e1qE26 {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
+  z-index: 20;
+}
+.maSOKrYHsPNjYS48Subg .bdZkY38M12yKa_e1qE26.E8Cp0rkj2671OHfxXe8u {
+  opacity: 0;
+}
+.maSOKrYHsPNjYS48Subg .bdZkY38M12yKa_e1qE26.E8Cp0rkj2671OHfxXe8u:focus-within {
+  opacity: 1;
+}
+.maSOKrYHsPNjYS48Subg .bdZkY38M12yKa_e1qE26 .aGG4rEifuDBRA3tip1oz {
+  background-color: var(--ups-color-white);
+}
+.maSOKrYHsPNjYS48Subg .bdZkY38M12yKa_e1qE26 .aGG4rEifuDBRA3tip1oz:not(:last-child) {
+  margin-right: var(--ups-spacing-sm);
+}
+.maSOKrYHsPNjYS48Subg .jH9dbPsKRMm111cnIk5Q {
+  position: relative;
+  width: 100%;
+}
+.maSOKrYHsPNjYS48Subg .jH9dbPsKRMm111cnIk5Q .Rar0slatbEEHoCGgrjU8 {
+  max-width: 100%;
+}
+.maSOKrYHsPNjYS48Subg .jH9dbPsKRMm111cnIk5Q .Rar0slatbEEHoCGgrjU8.gATY0FnbsweZ7sZIAVJk {
+  width: 100%;
+}
+.maSOKrYHsPNjYS48Subg .jH9dbPsKRMm111cnIk5Q .ETRVRNdkXWlPy4w6oYiY {
+  background-color: var(--ups-color-light-blue);
+  border: 1px solid var(--ups-color-blue);
+  border-radius: var(--ups-border-radius-sm);
+  padding-top: 66.66666667%;
+  width: 100%;
+}
+.maSOKrYHsPNjYS48Subg .jH9dbPsKRMm111cnIk5Q .ETRVRNdkXWlPy4w6oYiY .c3sb5EcghiPzJEysktBQ {
+  left: 50%;
+  position: absolute;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
+  top: 50%;
+}
+.maSOKrYHsPNjYS48Subg .jH9dbPsKRMm111cnIk5Q:hover .E8Cp0rkj2671OHfxXe8u {
+  opacity: 1;
+}
+.maSOKrYHsPNjYS48Subg:not(.ha_Y5emLgLO3MU0VsSHo) .Rar0slatbEEHoCGgrjU8 {
+  border-radius: var(--ups-border-radius-sm);
+  max-height: 500px;
+}
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/plugins/article-topper-panel/article-topper-panel.scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
+.article-topper-panel .row {
+  margin-bottom: var(--ups-spacing-base);
+}
+.article-topper-panel .topper-type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.article-topper-panel .topper-type .topper-type__control {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+}
+.article-topper-panel .topper-preview {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  width: 100%;
+  margin-top: calc(var(--ups-font-size-base) * var(--ups-line-height) + var(--ups-spacing-xs));
+  margin-left: var(--ups-spacing-base);
+}
+.article-topper-panel .topper-preview .topper-preview__window {
+  display: block;
+  width: 100%;
+}
+/*!*********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/plugins/authors-panel/authors-panel.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************/
+.authors-panel .author-suggestions,
+.authors-panel .author-list {
+  padding-left: 0;
+}
+.authors-panel .author-suggestions button,
+.authors-panel .author-list button {
+  text-decoration: none;
+}
+.authors-panel .author-suggestion__button {
+  display: block;
+  padding-left: 0;
+  padding-right: 0;
+}
+.authors-panel .author-list {
+  margin-bottom: var(--ups-spacing-base);
+}
+.authors-panel .author-list__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.authors-panel .author-list__move-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: var(--ups-spacing-sm);
+}
+.authors-panel .author-list__move-menu .button-up,
+.authors-panel .author-list__move-menu .button-down {
+  height: 18px;
+}
+.authors-panel .author-list__move-menu .button-up svg,
+.authors-panel .author-list__move-menu .button-down svg {
+  width: 15px;
+  height: 15px;
+}
+.authors-panel .author-list__move-menu .button-up {
+  border-radius: 3px 3px 0 0;
+}
+.authors-panel .author-list__move-menu .button-down {
+  border-radius: 0 0 3px 3px;
+}
+
+/*# sourceMappingURL=index.css.map*/
