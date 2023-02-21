@@ -65,8 +65,13 @@ domReady(() => {
   getBlockVariations('core/embed').forEach(variation => {
     unregisterBlockVariation('core/embed', variation.name);
   });
+});
 
-  // Update format type.
+/**
+ * Add custom class to inline images added to rich text content. This gives
+ * theme designers a selector target for inline image styles.
+ */
+domReady(() => {
   const image = unregisterFormatType('core/image');
   image.className = 'wp-rich-text-inline-image';
   registerFormatType('core/image', image);
