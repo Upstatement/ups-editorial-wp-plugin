@@ -50,8 +50,7 @@ import { Cover, File, Gallery, ImageLayout, RelatedArticles, Table, Video } from
  * unnecessary options for content editors and gives designers a blank slate
  * when implementing core blocks.
  *
- * @see
- * https://developer.wordpress.org/block-editor/reference-guides/block-api/block-styles/
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-styles/
  */
 domReady(() => {
   // Unregister core block styles.
