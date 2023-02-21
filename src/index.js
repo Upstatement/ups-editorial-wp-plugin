@@ -46,18 +46,22 @@ import { Cover, File, Gallery, ImageLayout, RelatedArticles, Table, Video } from
   });
 
 /**
- * Unregister block styles and variations on core blocks. This prevents
- * unnecessary options for content editors and gives designers a blank slate
- * when implementing core blocks.
+ * Unregister all block styles and variations on core blocks by default, with
+ * optional overrides provided in configuration. This prevents unnecessary
+ * options for content editors and gives designers a blank slate when
+ * implementing core blocks.
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-styles/
  */
 domReady(() => {
-  // Unregister core block styles.
-  ['core/image', 'core/quote', 'core/separator', 'core/table'].forEach(blockName => {
-    wp.blocks
-      .getBlockType(blockName)
-      .styles.forEach(({ name: styleName }) => unregisterBlockStyle(blockName, styleName));
+  const activeEnableBlockStyles = window.ups_editorial?.enable_block_styles;
+  ['button', 'image', 'quote', 'separator', 'table'].forEach(blockName => {
+    if (activeEnableBlockStyles && activeEnableBlockStyles.indexOf(blockName) === -1) {
+      blockName = 'core/' + blockName;
+      wp.blocks
+        .getBlockType(blockName)
+        .styles.forEach(({ name: styleName }) => unregisterBlockStyle(blockName, styleName));
+    }
   });
 
   // Unregister core Embed block variations.
