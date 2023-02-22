@@ -35,9 +35,7 @@ class Config {
 		),
 
 		// Enable core block styles.
-		'enable_block_styles'  => array(
-			'button',
-		),
+		'enable_block_styles'  => array(),
 	);
 
 	/**
