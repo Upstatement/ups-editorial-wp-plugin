@@ -45,27 +45,43 @@ import { Cover, File, Gallery, ImageLayout, RelatedArticles, Table, Video } from
     });
   });
 
+// ========================
+// General editor
+
 domReady(() => {
-  // Remove quote style panel
-  unregisterBlockStyle('core/quote', 'default');
-  unregisterBlockStyle('core/quote', 'plain');
+  /**
+   * Unregister all block styles and variations on core blocks by default, with
+   * optional overrides provided in configuration. This prevents unnecessary
+   * options for content editors and gives designers a blank slate when
+   * implementing core blocks.
+   *
+   * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-styles/
+   */
+  const activeEnableBlockStyles = window.ups_editorial?.enable_block_styles;
+  ['button', 'image', 'quote', 'separator', 'table']
+    .filter(
+      blockName => !activeEnableBlockStyles || activeEnableBlockStyles.indexOf(blockName) === -1,
+    )
+    .forEach(blockName =>
+      wp.blocks
+        .getBlockType(`core/${blockName}`)
+        .styles.forEach(({ name: styleName }) =>
+          unregisterBlockStyle(`core/${blockName}`, styleName),
+        ),
+    );
 
-  // Remove separator style panel
-  unregisterBlockStyle('core/separator', 'default');
-  unregisterBlockStyle('core/separator', 'wide');
-  unregisterBlockStyle('core/separator', 'dots');
-
-  // Remove table style panel
-  unregisterBlockStyle('core/table', 'regular');
-  unregisterBlockStyle('core/table', 'stripes');
-
-  // Updating format type
-  const image = unregisterFormatType('core/image');
-  image.className = 'wp-rich-text-inline-image';
-  registerFormatType('core/image', image);
-
-  // Unregister all the Embed block variations.
+  /**
+   * Unregister core Embed block variations.
+   */
   getBlockVariations('core/embed').forEach(variation => {
     unregisterBlockVariation('core/embed', variation.name);
   });
+
+  /**
+   * Add custom class to inline images added to rich text content. This gives
+   * theme designers a selector target for inline image styles.
+   */
+  const image = unregisterFormatType('core/image');
+  image.className = 'wp-rich-text-inline-image';
+  registerFormatType('core/image', image);
 });
