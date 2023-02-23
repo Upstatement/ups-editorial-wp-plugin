@@ -5,7 +5,7 @@
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'a752fadeb68c8447de44d3f7423c243e63101a12',
+        'reference' => '348674382621ef61e08a9175ca1a823b1171a11f',
         'name' => 'upstatement/ups-editorial-wp-plugin',
         'dev' => true,
     ),
@@ -47,12 +47,12 @@
             'dev_requirement' => true,
         ),
         'squizlabs/php_codesniffer' => array(
-            'pretty_version' => '3.7.1',
-            'version' => '3.7.1.0',
+            'pretty_version' => '3.7.2',
+            'version' => '3.7.2.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../squizlabs/php_codesniffer',
             'aliases' => array(),
-            'reference' => '1359e176e9307e906dc3d890bcc9603ff6d90619',
+            'reference' => 'ed8e00df0a83aa96acf703f8c2979ff33341f879',
             'dev_requirement' => true,
         ),
         'upstatement/ups-editorial-wp-plugin' => array(
@@ -61,7 +61,7 @@
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'a752fadeb68c8447de44d3f7423c243e63101a12',
+            'reference' => '348674382621ef61e08a9175ca1a823b1171a11f',
             'dev_requirement' => false,
         ),
         'wp-coding-standards/wpcs' => array(

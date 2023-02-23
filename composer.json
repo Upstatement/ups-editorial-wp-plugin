@@ -9,13 +9,15 @@
       "homepage": "https://upstatement.com"
     }
   ],
-  "description": "Plugin for extending the WordPress editorial experience.",
+  "description": "WordPress plugin for extending the WordPress editorial experience.",
   "autoload": {
     "psr-4": {
       "Upstatement\\Editorial\\": "includes"
     }
   },
-  "require": {},
+  "require": {
+    "php": ">=7.4"
+  },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.6",
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
