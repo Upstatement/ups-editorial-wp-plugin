@@ -7,5 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Upstatement\\Editorial\\' => array($baseDir . '/includes'),
+    'Ds\\' => array($vendorDir . '/php-ds/php-ds/src'),
     'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => array($vendorDir . '/dealerdirect/phpcodesniffer-composer-installer/src'),
 );

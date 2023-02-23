@@ -13,6 +13,7 @@ class ComposerStaticInite77806528b56491efceb0d413e19fe77
         ),
         'D' => 
         array (
+            'Ds\\' => 3,
             'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 55,
         ),
     );
@@ -21,6 +22,10 @@ class ComposerStaticInite77806528b56491efceb0d413e19fe77
         'Upstatement\\Editorial\\' => 
         array (
             0 => __DIR__ . '/../..' . '/includes',
+        ),
+        'Ds\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-ds/php-ds/src',
         ),
         'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 
         array (
