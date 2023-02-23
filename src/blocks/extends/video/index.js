@@ -43,6 +43,6 @@ const blockEditHook = {
   ),
 };
 
-const hooks = [blockEditHook];
+export const hooks = [blockEditHook];
 
-export default hooks;
+export const name = 'video';

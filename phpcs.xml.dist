@@ -9,16 +9,7 @@
   <ini name="error_reporting" value="E_ALL &#38; ~E_DEPRECATED" />
 
   <!-- Where to sniff -->
-  <file>./themes/wsk</file>
-  <exclude-pattern>*.twig</exclude-pattern>
-  <exclude-pattern>./themes/wsk/vendor</exclude-pattern>
-  <exclude-pattern>./themes/wsk/node_modules</exclude-pattern>
-  <exclude-pattern>*.js</exclude-pattern>
-  <exclude-pattern>*.css</exclude-pattern>
-  <exclude-pattern>*.scss</exclude-pattern>
-  <exclude-pattern>*.json</exclude-pattern>
-  <exclude-pattern>*.md</exclude-pattern>
-  <exclude-pattern>.gitignore</exclude-pattern>
+  <file>./includes</file>
 
   <!-- Don't hide tokenizer exceptions -->
   <rule ref="Internal.Tokenizer.Exception">
@@ -80,6 +71,10 @@
       <property name="strict_class_file_names" value="false"/>
     </properties>
     <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
+  </rule>
+
+  <rule ref="Squiz.Commenting">
+    <exclude name="Squiz.Commenting.ClassComment.Missing" />
   </rule>
 
 </ruleset>

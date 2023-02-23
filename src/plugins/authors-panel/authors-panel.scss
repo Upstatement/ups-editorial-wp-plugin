@@ -1,0 +1,49 @@
+.authors-panel {
+  .author-suggestions,
+  .author-list {
+    padding-left: 0;
+
+    button {
+      text-decoration: none;
+    }
+  }
+
+  .author-suggestion__button {
+    display: block;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .author-list {
+    margin-bottom: var(--ups-spacing-base);
+  }
+
+  .author-list__item {
+    display: flex;
+    align-items: center;
+  }
+
+  .author-list__move-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: var(--ups-spacing-sm);
+
+    .button-up,
+    .button-down {
+      height: 18px;
+      svg {
+        width: 15px;
+        height: 15px;
+      }
+    }
+
+    .button-up {
+      border-radius: 3px 3px 0 0;
+    }
+
+    .button-down {
+      border-radius: 0 0 3px 3px;
+    }
+  }
+}

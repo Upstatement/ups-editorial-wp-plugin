@@ -12,7 +12,7 @@ const registerBlockTypeHook = {
   hookName: 'blocks.registerBlockType',
   namespace: 'ups/extend/table-settings',
 
-  callback: function(settings, name) {
+  callback(settings, name) {
     if (name !== 'core/table') {
       return settings;
     }
@@ -81,6 +81,6 @@ const blockEditSave = {
   },
 };
 
-const hooks = [registerBlockTypeHook, blockEditHook, blockEditSave];
+export const hooks = [registerBlockTypeHook, blockEditHook, blockEditSave];
 
-export default hooks;
+export const name = 'table';

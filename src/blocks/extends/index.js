@@ -1,8 +1,7 @@
-export { default as Button } from './button';
-export { default as Cover } from './cover';
-export { default as File } from './file';
-export { default as Gallery } from './gallery';
-export { default as ImageLayout } from './image-layout';
-export { default as RelatedArticles } from './related-articles';
-export { default as Table } from './table';
-export { default as Video } from './video';
+export * as Cover from './cover';
+export * as File from './file';
+export * as Gallery from './gallery';
+export * as ImageLayout from './image-layout';
+export * as RelatedArticles from './related-articles';
+export * as Table from './table';
+export * as Video from './video';

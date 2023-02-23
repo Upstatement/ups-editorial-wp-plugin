@@ -1,7 +1,7 @@
 {
-  "name": "upstatement/ups-blocks-wp-plugin",
+  "name": "upstatement/ups-editorial-wp-plugin",
   "type": "wordpress-plugin",
-  "version": "1.0.0",
+  "license": "MIT",
   "authors": [
     {
       "name": "Upstatement",
@@ -9,11 +9,13 @@
       "homepage": "https://upstatement.com"
     }
   ],
-  "description": "WordPress plugin for cusomizing the editor experience to suit Upstatement-built WordPress projects.",
-  "require": {
-    "composer/installers": "v1.0.6",
-    "php-ds/php-ds": "^1.2"
+  "description": "Plugin for extending the WordPress editorial experience.",
+  "autoload": {
+    "psr-4": {
+      "Upstatement\\Editorial\\": "includes"
+    }
   },
+  "require": {},
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.6",
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
@@ -23,7 +25,6 @@
   "prefer-stable" : true,
   "config": {
     "allow-plugins": {
-      "composer/installers": true,
       "dealerdirect/phpcodesniffer-composer-installer": true
     }
   }

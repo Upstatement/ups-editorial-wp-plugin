@@ -19,10 +19,10 @@ export default function useAuthorsQuery({ initialQuery = '', exclude }) {
    * Search for author by query term.
    * @param {string} query Search query
    */
-  const queryAuthors = async function(query) {
+  const queryAuthors = async query => {
     setIsLoading(true);
     const results = await apiFetch({
-      path: `/wp/v2/authors?search=${encodeURIComponent(query)}&exclude=${encodeURIComponent(
+      path: `/wp/v2/ups_authors?search=${encodeURIComponent(query)}&exclude=${encodeURIComponent(
         exclude.join(','),
       )}`,
     });

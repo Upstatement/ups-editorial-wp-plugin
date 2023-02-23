@@ -1,13 +1,16 @@
-# built assets
-/build
-
 # local environment
 .env
 error.log
 
-# caching and debuging
+# Deps
 /node_modules
-/vendor
+
+vendor/**/*
+!vendor/autoload.php
+!vendor/composer
+!vendor/composer/*
+
+# caching and debuging
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

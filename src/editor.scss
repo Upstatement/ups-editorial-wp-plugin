@@ -1,0 +1,18 @@
+:root {
+  --ups-color-blue: #0075af;
+  --ups-color-light-blue: #f3f5f6;
+  --ups-color-gray: #555d66;
+  --ups-color-white: #ffffff;
+  --ups-color-black: #000000;
+
+  --ups-border-radius-sm: 3px;
+
+  --ups-font-size-base: 13px;
+  --ups-line-height: 1.4;
+
+  --ups-spacing-xs: 4px;
+  --ups-spacing-sm: 8px;
+  --ups-spacing-base: 16px;
+}
+
+@import './blocks/editor.scss';

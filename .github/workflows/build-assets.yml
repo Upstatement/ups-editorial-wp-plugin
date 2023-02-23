@@ -1,0 +1,30 @@
+name: Build and commit assets
+
+on: [pull_request]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Add & Commit
+        uses: EndBug/add-and-commit@v9.1.1
+        with:
+          add: build
+          message: 'Build production assets (from GitHub Actions)'

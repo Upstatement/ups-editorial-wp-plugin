@@ -1,6 +1,6 @@
 import apiFetch from '@wordpress/api-fetch';
 import { useState, useEffect, useMemo } from '@wordpress/element';
-import { SIZE } from '@src/utils/constants';
+import { SIZE } from '../utils/constants';
 
 /**
  * @typedef {{ id: number, source_url: string, alt_text: string credit: string, mime_type: string, media_details: { height: number, sizes: Record<string, object>, width: number } }} MediaUpload

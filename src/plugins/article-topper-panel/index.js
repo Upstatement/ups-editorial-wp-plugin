@@ -10,12 +10,15 @@ import {
   ExternalLink,
   Spinner,
 } from '@wordpress/components';
-import { unescape } from 'lodash';
-import { MediaControl } from '@src/components';
-import { useFieldUtils, useMedia, useMetaReducer } from '@src/hooks';
-import { MEDIA_TYPES } from '@src/utils/constants';
+
+import { MediaControl } from '../../components';
+import { useFieldUtils, useMedia, useMetaReducer } from '../../hooks';
+import { unescape } from '../../utils';
+import { MEDIA_TYPES } from '../../utils/constants';
 import { IMAGE_TOPPER_SET, TOPPER_TYPE_OPTIONS } from './constants';
 import { TopperPreview } from './components';
+
+import './article-topper-panel.scss';
 
 const META = {
   is_light_nav: 'is_light_nav',
@@ -237,3 +240,5 @@ export const render = () => {
     </PluginDocumentSettingPanel>
   );
 };
+
+export const enabled = window.ups_editorial?.article_topper_panel;

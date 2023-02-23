@@ -7,7 +7,7 @@ const registerBlockTypeHook = {
   hookName: 'blocks.registerBlockType',
   namespace: 'ups/extend/image-layout-settings',
 
-  callback: function(settings, name) {
+  callback(settings, name) {
     if (name !== 'acf/imagelayout') {
       return settings;
     }
@@ -28,6 +28,6 @@ const registerBlockTypeHook = {
   },
 };
 
-const hooks = [registerBlockTypeHook];
+export const hooks = [registerBlockTypeHook];
 
-export default hooks;
+export const name = 'image-layout';

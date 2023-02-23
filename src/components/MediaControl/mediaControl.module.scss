@@ -1,12 +1,12 @@
-.ues-media-control {
-  .ues-media-control__action {
+.mediaControl {
+  .action {
     left: 50%;
     position: absolute;
     top: 50%;
     transform: translate3d(-50%, -50%, 0);
     z-index: 20;
 
-    &.ues-media-control__action--hover {
+    &.action__hover {
       opacity: 0;
 
       &:focus-within {
@@ -14,35 +14,35 @@
       }
     }
 
-    .ues-media-control__action__btn {
-      background-color: $c-white;
+    .btn {
+      background-color: var(--ups-color-white);
 
       &:not(:last-child) {
-        margin-right: $spacing-sm;
+        margin-right: var(--ups-spacing-sm);
       }
     }
   }
 
-  .ues-media-control__preview {
+  .preview {
     position: relative;
     width: 100%;
 
-    .ues-media-control__preview__actual {
+    .previewActual {
       max-width: 100%;
 
-      &.ues-media-control__preview__actual--full {
+      &.previewActual__full {
         width: 100%;
       }
     }
 
-    .ues-media-control__preview__placeholder {
-      background-color: $c-light-blue;
-      border: 1px solid $c-blue;
-      border-radius: $border-radius--sm;
-      padding-top: 100% * 2 / 3;
+    .placeholder {
+      background-color: var(--ups-color-light-blue);
+      border: 1px solid var(--ups-color-blue);
+      border-radius: var(--ups-border-radius-sm);
+      padding-top: 66.66666667%;
       width: 100%;
 
-      .ues-media-control__preview__spinner {
+      .spinner {
         left: 50%;
         position: absolute;
         transform: translate3d(-50%, -50%, 0);
@@ -50,14 +50,14 @@
       }
     }
 
-    &:hover .ues-media-control__action--hover {
+    &:hover .action__hover {
       opacity: 1;
     }
   }
 
-  &:not(.ues-media-control--block) {
-    .ues-media-control__preview__actual {
-      border-radius: $border-radius--sm;
+  &:not(.mediaControl__block) {
+    .previewActual {
+      border-radius: var(--ups-border-radius-sm);
       max-height: 500px;
     }
   }

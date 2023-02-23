@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { Button, BaseControl, Spinner } from '@wordpress/components';
 import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
-import { className } from '@src/utils';
-import { MEDIA_TYPES } from '@src/utils/constants';
-import './mediaControl.module.scss';
+import { className } from '../../utils';
+import { MEDIA_TYPES } from '../../utils/constants';
+import styles from './mediaControl.module.scss';
 
 const MediaControl = ({
   allowedTypes,
@@ -30,9 +30,9 @@ const MediaControl = ({
   const renderPreview = () => {
     if (!value) {
       return (
-        <div className="ues-media-control__preview__placeholder">
+        <div className={styles.placeholder}>
           {loading && (
-            <span className="ues-media-control__preview__spinner">
+            <span className={styles.spinner}>
               <Spinner />
             </span>
           )}
@@ -42,10 +42,7 @@ const MediaControl = ({
       return (
         //eslint-disable-next-line jsx-a11y/media-has-caption
         <video
-          {...className(
-            'ues-media-control__preview__actual',
-            fullWidth && 'ues-media-control__preview__actual--full',
-          )}
+          {...className(styles.previewActual, fullWidth && styles.previewActual__full)}
           autoPlay
           loop
           muted>
@@ -55,10 +52,7 @@ const MediaControl = ({
     }
     return (
       <img
-        {...className(
-          'ues-media-control__preview__actual',
-          fullWidth && 'ues-media-control__preview__actual--full',
-        )}
+        {...className(styles.previewActual, fullWidth && styles.previewActual__full)}
         src={value.url}
         alt={value.alt}
       />
@@ -67,32 +61,28 @@ const MediaControl = ({
 
   return (
     <BaseControl
-      {...className('ues-media-control', asBlock && 'ues-media-control--block')}
+      {...className(styles.mediaControl, asBlock && styles.mediaControl__block)}
       label={label}
       help={help}
       hideLabelFromVision={hideLabelFromVision}
       id={id}>
-      <div className="ues-media-control__preview">
+      <div className={styles.preview}>
         {!loading && (
-          <div
-            {...className(
-              'ues-media-control__action',
-              value && 'ues-media-control__action--hover',
-            )}>
+          <div {...className(styles.action, value && styles.action__hover)}>
             <MediaUploadCheck>
               <MediaUpload
                 onSelect={onChange}
                 allowedTypes={allowedTypes}
                 value={value ? value.id : null}
                 render={({ open }) => (
-                  <Button className="ues-media-control__action__btn" isSecondary onClick={open}>
+                  <Button className={styles.btn} isSecondary onClick={open}>
                     {value ? 'Edit' : 'Choose media'}
                   </Button>
                 )}
               />
             </MediaUploadCheck>
             {value && (
-              <Button className="ues-media-control__action__btn" isSecondary onClick={onRemove}>
+              <Button className={styles.btn} isSecondary onClick={onRemove}>
                 Remove
               </Button>
             )}

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { RichText } from '@wordpress/block-editor';
-import { escapeQuotes, findAndReplaceElement } from '@src/utils';
+import { escapeQuotes, findAndReplaceElement } from '../../../utils';
 
 /**
  * This is pulled from the `core/table` save element.

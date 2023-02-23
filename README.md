@@ -1,129 +1,29 @@
-# Upstatement Blocks
+# Upstatement Editorial
 
-A plugin for customizing the [Gutenberg](https://wordpress.org/gutenberg/) editor experience to suit Upstatement-built WordPress projects.
+A WordPress plugin for enhancing the editorial experience, including some common customizations for the [Gutenberg](https://wordpress.org/gutenberg/) editor.
 
 ## Table of Contents
 
 - [What This Plugin Does](#what-this-plugin-does)
-- [Local Development](#local-development)
-- [Directory Structure](#directory-structure)
-- [Gutenberg Blocks](#gutenberg-blocks)
-  - [Custom Blocks](#custom-blocks)
-  - [Extended Blocks](#extended-blocks)
-- [Gutenberg Plugins](#gutenberg-plugins)
-  - [Article Topper Panel](#article-topper-panel)
-  - [Bylines Panel](#bylines-panel)
+  - [Blocks](#blocks)
+  - [Editor Plugins](#editor-plugins)
+  - [Core Enhancements](#core-enhancements)
+- [Theme Configuration](#theme-configuration)
+- [Theme API](#theme-api)
 - [Troubleshooting](#troubleshooting)
+- [Local Development](#local-development)
 - [Resources](#resources)
 
 ## What This Plugin Does
 
-The purpose of this plugin is to tailor the Gutenberg editor experience to be better suited to editors using Upstatement WordPress themes. This means a variety of things, such as:
+The purpose of this plugin is to tailor the Gutenberg editor experience to be better suited to editors using their WordPress theme and to add functionality common to many websites. Features added as a part of this plugin fall into three categories: block modifications, editor plugins, and core enhancements. This plugin also exposes some global functions that can be used in theme templates.
 
-- Removing default block settings (like selecting font colors)
-- Limiting alignment options for blocks
-- Excluding extraneous core blocks from the Gutenberg selector
-- Replacing the core image block with a custom image block to expose theme-related functionality
-- Allowing for multiple authors to appear on the byline
+### Blocks
 
+#### Extended Blocks
 
-## Local Development
+The following blocks are extended typically at the registration hook (`blocks.registerBlockType`) to limit the number of available options for an editor. Some blocks also hook into the edit lifecycle (via the `editor.BlockEdit` hook) to add additional classes and structure to the editor markup so as to be able to control certain aspects of the block's settings with css.
 
-This repository includes a docker setup that will allow you to run a basic WordPress installation with the ups-block plugin installed. You'll need to ensure that you have [Docker Desktop](https://www.docker.com/products/docker-desktop) installed on your machine first.
-
-To start working locally:
-
-1. Install Node and NPM via [nvm](https://github.com/nvm-sh/nvm):
-
-   ```shell
-   nvm install
-   ```
-
-2. Install Node dependencies:
-
-   ```shell
-   npm install
-   ```
-
-3. Watch the plugin files for changes:
-
-   ```shell
-   npm run start
-   ```
-
-
-4. Start the docker containers (note that the `-d` flag will run the container in the background):
-
-    ```shell
-    docker-compose up -d --build
-    ```
-
-You can build the static front-end assets at any time with the following script:
-
-```shell
-npm run build
-```
-
-
-## Directory Structure
-
-```text
-.
-├── lib                     # Functions that are used outside of this plugin
-├── src
-│   ├── blocks
-│   │   ├── custom          # Custom Gutenberg blocks we've created
-│   │   ├── extends         # Extending core Gutenberg blocks
-│   │   ├── editor.scss     # Styles for the editor interface
-│   │   ├── index.js        # Entry point for registering & extending blocks
-│   │   └── style.scss      # Styles for our blocks on the front-end
-│   ├── components          # Reusable components across blocks and plugins
-│   ├── hooks               # Custom React hooks
-│   ├── plugins             # Custom Gutenberg plugins
-│   │   ├── index.js        # Entry point for registering Gutenberg plugins
-│   │   └── style.scss      # Styles for our Gutenberg plugins
-│   ├── style               # Reusable Sass styles and variables across blocks and plugins
-│   └── utils               # Utility functions
-├── index.php               # Entry point for enqueuing our plugin's scripts & styles
-├── jsconfig.json
-├── package-lock.json
-├── package.json
-├── README.md
-└── webpack.config.js
-```
-
-## Gutenberg Blocks
-
-### Custom Blocks
-
-> _Note:_ When adding new custom blocks, be sure to add their names to the `CUSTOM_BLOCKS` array within [`lib/exclude_blocks.php`](./lib/exclude_blocks.php) to ensure it can appear in the block selector.
-
-- [Image Block](./src/blocks/custom/image/index.js) (replaces the core image block)
-
-  - Adds support for the `Alt Text` and `Credit` attachment fields in the media library
-  - Updates the default caption state to pull from the `Caption` attachment field
-  - Adds support for the custom Modal Gallery component in the main Editorial theme
-  - Removes unneeded features from core image block, including border styles
-
-#### When to go custom?
-
-There are a few considerations one should have before choosing to add a new custom block.
-
-1.  _Is there an existing block which already handles the functionality I need?_
-
-    Building a custom block is a considerable amount of work. If we can save time by using an already existing core block, it's better to go that route.
-
-2.  _Are similar existing blocks limited in the functionality you require?_
-
-    While core blocks can often fulfill most of our requirements, there are cases in which they don't have everything we need to move forward. It's at this point that we can make a choice of whether to extend an existing block or go custom. When only minimal changes are needed (such as updating alignment support, adding a new attribute, or updating the block inspector panel), it's best to just extend the block. When this is not the case and dramatic changes to the existing block's API are needed, you might be better off going custom.
-
-3.  _Will the addition of this custom block improve the editor experience?_
-
-    Gutenberg blocks were created as a way to provide a near-seamless editor experience, where editors can visually add content and layout a page that will look and feel like the final product. We hope to continue that philosophy and only choose and create blocks we believe will empower an editor to create the best content. This may include limiting which controls an editor has access to, adding functionality that links to custom theme code, or designing a new experience to match the needs of a unique design. If the time spent creating a custom block is worth the time saved for the editor in using it, then going custom can be the right choice.
-
-### Extended Blocks
-
-- [Button](./src/blocks/extends/button/index.js)
 - [Cover](./src/blocks/extends/cover/index.js)
 - [File](./src/blocks/extends/file/index.js)
 - [Gallery](./src/blocks/extends/gallery/index.js)
@@ -132,13 +32,13 @@ There are a few considerations one should have before choosing to add a new cust
 - [Table](./src/blocks/extends/table/index.js)
 - [Video](./src/blocks/extends/video/index.js)
 
-You can extend core block functionality by using WordPress's [blocks.registerBlockType](https://developer.wordpress.org/block-editor/developers/filters/block-filters/#blocks-registerblocktype) and [editor.BlockEdit](https://developer.wordpress.org/block-editor/developers/filters/block-filters/#editor-blockedit) filters.
+> Note that you can continue to extend core block functionality in your theme by using WordPress's [blocks.registerBlockType](https://developer.wordpress.org/block-editor/developers/filters/block-filters/#blocks-registerblocktype) and [editor.BlockEdit](https://developer.wordpress.org/block-editor/developers/filters/block-filters/#editor-blockedit) filters.
 
-## Gutenberg Plugins
+### Editor Plugins
 
-Our main Gutenberg "plugin" adds two panels to the main sidebar of posts: the Article Topper & Bylines panels.
+Our main Gutenberg "plugin" adds two panels to the main sidebar of posts: the Article Topper & Authors panels.
 
-### Article Topper Panel
+#### Article Topper Panel
 
 The article topper panel controls article post metadata concerned with the article topper. This includes:
 
@@ -146,11 +46,154 @@ The article topper panel controls article post metadata concerned with the artic
 - `Navigation theme`: When paired with dark background image toppers, an already dark-themed nav can appear invisible. This option allows for lighter navigation themes
 - `Overline`: Choose a primary category for your article to allow for better recirculation amongst common themes
 
-### Bylines Panel
+#### Authors Panel
 
-The bylines panel allows editors to assign multiple authors to the author byline. This process starts with the `Authors` section under `Posts`, where you can create author profiles.
+The Authors panel allows editors to assign multiple authors to the author byline. This process starts with the `Authors` section under `Posts`, where you can create author profiles.
 
 These authors also serve as taxonomies for your articles, so archive pages full of an author's own content are auto-generated on your behalf.
+
+### Core Enhancements
+
+- Adds a `Credit` field to attachment posts.
+
+### Template functions
+
+This plugin exposes a few functions that can be used to retrieve relevant values handled by the plugin. See the [Theme API](#theme-api) section for information about the available functions.
+
+## Theme configuration
+
+By default, all features of this plugin are enabled once the plugin is activated. However, you are able to configure the plugin's functionality (including disabling certain features) via a configuration file that can be added to your theme.
+
+To set up a configuration file, add a `ups-editorial.php` file to your theme's root that returns an array containing the relevant configuration options:
+
+```php
+<?php
+/**
+ * Configuration for the ups-editorial plugin.
+ */
+
+return array(
+  'author_panel'         => true,
+  'article_topper_panel' => true,
+  'attachment_credit'    => true,
+  'extended_blocks'      => array(
+		'cover',
+		'file',
+		'gallery',
+		'image-layout',
+		'related-articles',
+		'table',
+		'video',
+	),
+  'enable_block_styles'  => array(),
+);
+```
+
+### Configuration
+
+#### `author_panel`
+
+**Allowed types:** `boolean`
+
+**Default value:** `true`
+
+Enable or disable the plugin's `Author` taxonomy, as well as the Gutenberg editor panel containing the mechanism to add and manage authors for an individual post.
+
+#### `article_topper_panel`
+
+**Allowed types:** `boolean`
+
+**Default value:** `true`
+
+Enable or disable the registration of fields for article toppers and the Gutenberg panel that controls those fields.
+
+#### `attachment_credit`
+
+**Allowed types:** `boolean`
+
+**Default value:** `true`
+
+Enable or disable the registration of a `credit` field for attachments.
+
+#### `extended_blocks`
+
+**Allowed types:** `array`
+
+**Default value:**
+
+```php
+array(
+  'cover',
+  'file',
+  'gallery',
+  'image-layout',
+  'related-articles',
+  'table',
+  'video',
+)
+```
+
+A list of blocks that are extended by the plugin. To disable the extension of a certain block, exclude it from this array.
+
+#### `enable_block_styles`
+
+**Allowed types:** `array`
+
+**Default value:** `array()`
+
+WordPress core includes style options for some core blocks. This plugin removes those style options by default, but this parameter can be used to re-enable the core style options for specific blocks. The following blocks have core styles that can be re-enabled via this parameter: `button`, `image`, `quote`, `separator`, `table`.
+
+## Theme API
+
+There are a few globally-available functions that can be used by your theme to retrieve data defined by this plugin's functionality. These functions are defined in the `Template.php` file at the root of the plugin directory, and exist under the `Upstatement\Editorial` namespace.
+
+It is recommended that your theme implement these functions wrapped by a `function_exists` check to prevent undefined errors in the case that the plugin is disabled. For example:
+
+```php
+if ( function_exists( 'Upstatement\Editorial\get_post_authors' ) ) {
+  $authors = \Upstatement\Editorial\get_post_authors();
+  ...
+```
+
+### `get_post_authors`
+
+```php
+get_post_authors( WP_Post $post = null, string $field = null) : array | null
+```
+
+Retrieve a list of authors for a post.
+
+#### Parameters
+
+**`post`**
+
+&nbsp;&nbsp;&nbsp;&nbsp;Post to retrieve authors for. Leave blank to use the current global post.
+
+**`field`**
+
+&nbsp;&nbsp;&nbsp;&nbsp;The field to return for each author. This can be any property from a WP_Term object. Leave blank to return the entire WP_Term object.
+
+#### Return
+
+Returns an array consisting of author data. If **`field`** is blank, this will be an array of `WP_Term` objects. If a **`field`** is specific, this will be an array of values for that field.
+
+### `get_post_overline`
+
+```php
+get_post_overline( WP_Post $post = null ) : WP_Term | null
+```
+
+Retrieve the overline category for a post.
+
+#### Parameters
+
+**`post`**
+
+&nbsp;&nbsp;&nbsp;&nbsp;Post to retrieve the overline for. Leave blank to use the current global post.
+
+#### Return
+
+Returns the `WP_Term` object of the category term identified as the overline, or null if none is set.
 
 ## Troubleshooting
 
@@ -198,6 +241,47 @@ Content retrieved from post body:
 ```
 
 > In the case above, there was a new `cite` element added to the markup after the block was already saved to the post. At this point you can either (1) choose the `Attempt block recovery` option to update the markup, (2) remove and recreate the block, or (3) revert the save function to remove the `cite` element.
+
+## Local Development
+
+To make changes to this plugin, you can download this repository and add it to the `plugins/` directory of any running WordPress instance. You'll also need to perform some setup steps to ensure that you have all the built dependencies:
+
+To start working locally, you'll need the following things on your machine:
+
+- [nvm](https://github.com/nvm-sh/nvm) to manage the Node version this project is running on.
+- [composer](https://getcomposer.org/) to manage PHP dependencies and autoloading.
+
+Once the above are installed, you can get set up with the following steps:
+
+1. Ensure you're running the expected version of Node:
+
+   ```shell
+   nvm install
+   ```
+
+2. Install Node dependencies:
+
+   ```shell
+   npm install
+   ```
+
+3. Install composer dependencies and generate autoloaders:
+
+   ```shell
+   composer install
+   ```
+
+4. Watch the plugin files for changes:
+
+   ```shell
+   npm run start
+   ```
+
+You can build the static front-end assets at any time with the following script:
+
+```shell
+npm run build
+```
 
 ## Resources
 
