@@ -18,12 +18,12 @@ class AttachmentCredit {
 	 */
 	private $attachment_fields = array(
 		array(
-			'id' => 'credit',
-			'label' => 'Credit',
-			'input' => 'text',
-			'helps' => 'Provide credit to the creator',
+			'id'     => 'credit',
+			'label'  => 'Credit',
+			'input'  => 'text',
+			'helps'  => 'Provide credit to the creator',
 			'single' => true,
-		)
+		),
 	);
 
 	/**
@@ -35,7 +35,7 @@ class AttachmentCredit {
 		$attachment_credit = new self();
 
 		add_filter( 'attachment_fields_to_edit', array( $attachment_credit, 'register_edit_fields' ), 10, 2 );
-		add_filter( 'attachment_fields_to_save', array( $attachment_credit, 'handle_save_fields'), 10, 2 );
+		add_filter( 'attachment_fields_to_save', array( $attachment_credit, 'handle_save_fields' ), 10, 2 );
 
 		add_action( 'rest_api_init', array( $attachment_credit, 'register_rest_fields' ) );
 	}
@@ -72,7 +72,7 @@ class AttachmentCredit {
 	 * @param array $post       Array of post data.
 	 * @param array $attachment Attachment metadata.
 	 *
-	 * @return void
+	 * @return array
 	 */
 	public function handle_save_fields( $post, $attachment ) {
 		foreach ( $this->attachment_fields as $field ) {
@@ -93,12 +93,12 @@ class AttachmentCredit {
 	 * @return void
 	 */
 	public function register_rest_fields() {
-		foreach ($this->attachment_fields as $field) {
+		foreach ( $this->attachment_fields as $field ) {
 			register_rest_field(
 				'attachment',
 				$field['id'],
 				array(
-					'get_callback'    => function($object) use ($field) {
+					'get_callback'    => function( $object ) use ( $field ) {
 						return get_post_meta( $object['id'], $field['id'], $field['single'] );
 					},
 					'update_callback' => null,
