@@ -7,6 +7,7 @@ A WordPress plugin for enhancing the editorial experience, including some common
 - [What This Plugin Does](#what-this-plugin-does)
   - [Blocks](#blocks)
   - [Editor Plugins](#editor-plugins)
+  - [Core Enhancements](#core-enhancements)
 - [Theme Configuration](#theme-configuration)
 - [Theme API](#theme-api)
 - [Troubleshooting](#troubleshooting)
@@ -15,7 +16,7 @@ A WordPress plugin for enhancing the editorial experience, including some common
 
 ## What This Plugin Does
 
-The purpose of this plugin is to tailor the Gutenberg editor experience to be better suited to editors using their WordPress theme. Features added as a part of this plugin fall into two categories: block modifications and editor plugins.
+The purpose of this plugin is to tailor the Gutenberg editor experience to be better suited to editors using their WordPress theme and to add functionality common to many websites. Features added as a part of this plugin fall into three categories: block modifications, editor plugins, and core enhancements. This plugin also exposes some global functions that can be used in theme templates.
 
 ### Blocks
 
@@ -51,6 +52,10 @@ The Authors panel allows editors to assign multiple authors to the author byline
 
 These authors also serve as taxonomies for your articles, so archive pages full of an author's own content are auto-generated on your behalf.
 
+### Core Enhancements
+
+- Adds a `Credit` field to attachment posts.
+
 ### Template functions
 
 This plugin exposes a few functions that can be used to retrieve relevant values handled by the plugin. See the [Theme API](#theme-api) section for information about the available functions.
@@ -80,6 +85,7 @@ return array(
 		'table',
 		'video',
 	),
+  'enable_block_styles'  => array(),
 );
 ```
 
@@ -128,6 +134,14 @@ array(
 ```
 
 A list of blocks that are extended by the plugin. To disable the extension of a certain block, exclude it from this array.
+
+#### `enable_block_styles`
+
+**Allowed types:** `array`
+
+**Default value:** `array()`
+
+WordPress core includes style options for some core blocks. This plugin removes those style options by default, but this parameter can be used to re-enable the core style options for specific blocks. The following blocks have core styles that can be re-enabled via this parameter: `button`, `image`, `quote`, `separator`, `table`.
 
 ## Theme API
 
