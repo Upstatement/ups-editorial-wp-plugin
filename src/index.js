@@ -58,8 +58,6 @@ domReady(() => {
    * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-styles/
    */
   const activeEnableBlockStyles = window.ups_editorial?.enable_block_styles;
-
-  console.log(activeEnableBlockStyles);
   ['button', 'image', 'quote', 'separator', 'table']
     .filter(
       blockName => !activeEnableBlockStyles || activeEnableBlockStyles.indexOf(blockName) === -1,
