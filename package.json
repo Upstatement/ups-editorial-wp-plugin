@@ -6,7 +6,9 @@
   "license": "ISC",
   "scripts": {
     "build": "wp-scripts build",
-    "start": "wp-scripts start"
+    "start": "wp-scripts start",
+    "lint:scripts": "eslint './src/**/*.js' --cache",
+    "lint:php": "./vendor/bin/phpcs --standard=phpcs.xml.dist --error-severity=1 --warning-severity=8 -p"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
